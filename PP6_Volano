@@ -1,0 +1,124 @@
+%======================= PREAMBOLO DICHIARAZIONI INIZIALI===============%
+\documentclass[10pt,oneside,a4paper]{article}
+
+\usepackage[latin1]{inputenc} 
+\usepackage[italian]{babel}
+\usepackage{siunitx} %Inserisce automaticamente i dati con le unità  di misura correttamente formattate del SI (utilizzo: \SI{0.82}{m^2}, in generale \SI{misura con il punto decimale}{unità  di misura})
+\sisetup{output-decimal-marker = {.}, separate-uncertainty = true, input-uncertainty-signs = \pm, detect-weight=true, detect-family=true} %per usare SI con il punto decimale
+\usepackage{listings} %Per citare codice informatico formattandolo correttamente
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{epigraph}
+\usepackage{booktabs}	%tabelle migliorate
+\usepackage{tablefootnote}	%note a piè di pagina in tabella
+\usepackage{threeparttable} %tabella con note a piè di tabella
+\usepackage{caption}	%descrizione per figure
+\captionsetup{tableposition=top,figureposition=bottom,font=small} %setup descrizione
+\usepackage{float}
+\usepackage{esvect} %vettori
+\usepackage{longtable} %tabelle lunghe
+\usepackage[dvipsnames]{xcolor}
+\definecolor{sepia}{HTML}{80002A}
+\usepackage[colorlinks=true, citecolor=black, linkcolor=sepia, urlcolor=black]{hyperref}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+
+
+\usepackage{listings} %Per inserire codice
+\lstnewenvironment{codice_c}[1][]
+{\lstset{basicstyle=\small\ttfamily, columns=fullflexible,
+keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},
+language=C, basicstyle=\small,
+numbers=left, numberstyle=\tiny,
+stepnumber=2, numbersep=5pt, frame=shadowbox, #1}}{}
+
+\setcounter{section}{-1}
+
+%========= PRIMA PAGINA ===========%
+\title{\textsc{Misura della frequenza di fenomeni radioattivi e studio di un pallinometro}}
+\author{\small{G. Galbato Muscio} \and \small{L. Gravina} \and \small{L. Graziotto} \and \small{M. Rescigno}}
+\date{}
+
+\begin{document}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.5, trim={2.8cm 8.9cm 0 9cm}, clip]{logo.png}
+	\end{figure}
+	\maketitle
+	\begin{center} 
+		\fbox{{\fontsize{12pt}{8mm}\textsc{Gruppo B2.3}}} \\
+		\vspace{1cm}
+		\begin{tabular}{ccc}
+			Esperienza di laboratorio && Consegna della relazione \\
+			\emph{\small{3 maggio 2017}} && \emph{\small{14 maggio 2017}} \\
+										&& 	\emph{\small{23 maggio 2017} (seconda parte)}  \\
+		\end{tabular} 
+		
+		\vspace{0.5cm}
+		
+	\end{center}
+\hrule
+\vspace{0.5cm}
+\begin{abstract}
+Utilizzando un contatore Geiger-M\"uller misuriamo la radioattività  ambientale, quella dovuta ai raggi cosmici e la radiazione emessa da un blocco di tufo. Studiamo quindi la distribuzione delle biglie in un pallinometro fisico e in uno simulato.	
+\end{abstract}
+\newpage
+\tableofcontents %Indice
+\listoftables %Indice delle tabelle
+\listoffigures %Indice dei grafici
+\pagebreak
+\section{Convenzioni e formule}
+In questa relazione verranno usate le seguenti convenzioni:
+\begin{enumerate}
+	\item sarà usato il punto [ $.$ ] come separatore decimale;
+	\item l'approssimazione decimale della cifra $5$ sarà fatta per eccesso;
+	\item al fine di snellire la relazione e migliorarne la leggibilità , riporteremo nel corpo del documento solamente le tabelle riepilogative e alcuni grafici, e dedicheremo un'appendice finale alle tabelle e ai grafici più dettagliati.
+\end{enumerate}
+Inoltre, si farà riferimento alle seguenti formule:
+\begin{enumerate}
+	\item media 
+	\begin{equation}\label{eq:media}
+	\bar{x} = \frac{1}{N}\sum_{i=1}^Nx_i;
+	\end{equation}
+	\item varianza
+	\begin{equation}\label{eq:varianza}
+	\sigma^2 = \frac{1}{N}\sum_{i=1}^N(x_i-\bar{x})^2;
+	\end{equation}
+	\item deviazione standard
+	\begin{equation}\label{eq:deviazione}
+	\sigma = \sqrt{\sigma^2}.
+	\end{equation}	
+\end{enumerate}
+
+
+%===============SCOPO E DESCRIZIONE DELL'ESPERIENZA==============%
+\section{Scopo e descrizione dell'esperienza}
+\label{sec:descrizione}
+
+
+
+%================APPARATO SPERIMENTALE======================%		
+\section{Apparato Sperimentale}
+
+
+%==================SEQUENZA OPERAZIONI SPERIMENTALI==========
+\section{Sequenza Operazioni Sperimentali} 
+\subsection{Misura delle grandezze in gioco}
+
+\subsecion{Estrazione del momento della forza d'attrito e del momento d'inerzia}
+
+\subsecion{Studio della perdita di energia potenziale gravitazionale a causa dell'attrito}
+
+\subsection{studio del moto del volano in presenza di attrito del mezzo}
+
+%========================= CONCLUSIONI =============
+\section{considerazioni Finali}
+
+\pagebreak
+%=================APPENDICE==================================
+
+\section{Appendice: tabelle e grafici}
+
+
+\end{document}
