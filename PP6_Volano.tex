@@ -3,7 +3,7 @@
 
 \usepackage[latin1]{inputenc} 
 \usepackage[italian]{babel}
-\usepackage{siunitx} %Inserisce automaticamente i dati con le unit√†  di misura correttamente formattate del SI (utilizzo: \SI{0.82}{m^2}, in generale \SI{misura con il punto decimale}{unit√†  di misura})
+\usepackage{siunitx} %Inserisce automaticamente i dati con le unit‡  di misura correttamente formattate del SI (utilizzo: \SI{0.82}{m^2}, in generale \SI{misura con il punto decimale}{unit‡  di misura})
 \sisetup{output-decimal-marker = {.}, separate-uncertainty = true, input-uncertainty-signs = \pm, detect-weight=true, detect-family=true} %per usare SI con il punto decimale
 \usepackage{listings} %Per citare codice informatico formattandolo correttamente
 \usepackage{amsmath}
@@ -11,8 +11,8 @@
 \usepackage{geometry}
 \usepackage{epigraph}
 \usepackage{booktabs}	%tabelle migliorate
-\usepackage{tablefootnote}	%note a pi√® di pagina in tabella
-\usepackage{threeparttable} %tabella con note a pi√® di tabella
+\usepackage{tablefootnote}	%note a piË di pagina in tabella
+\usepackage{threeparttable} %tabella con note a piË di tabella
 \usepackage{caption}	%descrizione per figure
 \captionsetup{tableposition=top,figureposition=bottom,font=small} %setup descrizione
 \usepackage{float}
@@ -22,7 +22,10 @@
 \definecolor{sepia}{HTML}{80002A}
 \usepackage[colorlinks=true, citecolor=black, linkcolor=sepia, urlcolor=black]{hyperref}
 \usepackage{mathrsfs}
-\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
+
+\newcommand{\var}{\operatorname{var}}
+\newcommand{\cov}{\operatorname{cov}}
 
 
 \usepackage{listings} %Per inserire codice
@@ -36,7 +39,7 @@ stepnumber=2, numbersep=5pt, frame=shadowbox, #1}}{}
 \setcounter{section}{-1}
 
 %========= PRIMA PAGINA ===========%
-\title{\textsc{Misura della frequenza di fenomeni radioattivi e studio di un pallinometro}}
+\title{\textsc{Studio del moto di un volano}}
 \author{\small{G. Galbato Muscio} \and \small{L. Gravina} \and \small{L. Graziotto} \and \small{M. Rescigno}}
 \date{}
 
@@ -51,8 +54,7 @@ stepnumber=2, numbersep=5pt, frame=shadowbox, #1}}{}
 		\vspace{1cm}
 		\begin{tabular}{ccc}
 			Esperienza di laboratorio && Consegna della relazione \\
-			\emph{\small{3 maggio 2017}} && \emph{\small{14 maggio 2017}} \\
-										&& 	\emph{\small{23 maggio 2017} (seconda parte)}  \\
+			\emph{\small{24 maggio 2017}} && \emph{\small{30 maggio 2017}} \\
 		\end{tabular} 
 		
 		\vspace{0.5cm}
@@ -61,7 +63,7 @@ stepnumber=2, numbersep=5pt, frame=shadowbox, #1}}{}
 \hrule
 \vspace{0.5cm}
 \begin{abstract}
-Utilizzando un contatore Geiger-M\"uller misuriamo la radioattivit√†  ambientale, quella dovuta ai raggi cosmici e la radiazione emessa da un blocco di tufo. Studiamo quindi la distribuzione delle biglie in un pallinometro fisico e in uno simulato.	
+Si studiano le leggi orarie che descrivono il moto di un volano, e da queste si misurano il momento d'inerzia del volano e il momento frenante che ne ostacola la rotazione, anche dipendente dall'attrito con l'aria.
 \end{abstract}
 \newpage
 \tableofcontents %Indice
@@ -71,11 +73,11 @@ Utilizzando un contatore Geiger-M\"uller misuriamo la radioattivit√†  ambientale
 \section{Convenzioni e formule}
 In questa relazione verranno usate le seguenti convenzioni:
 \begin{enumerate}
-	\item sar√† usato il punto [ $.$ ] come separatore decimale;
-	\item l'approssimazione decimale della cifra $5$ sar√† fatta per eccesso;
-	\item al fine di snellire la relazione e migliorarne la leggibilit√† , riporteremo nel corpo del documento solamente le tabelle riepilogative e alcuni grafici, e dedicheremo un'appendice finale alle tabelle e ai grafici pi√π dettagliati.
+	\item sar‡ usato il punto [ $.$ ] come separatore decimale;
+	\item l'approssimazione decimale della cifra $5$ sar‡ fatta per eccesso;
+	\item al fine di snellire la relazione e migliorarne la leggibilit‡, riporteremo nel corpo del documento solamente le tabelle riepilogative e alcuni grafici, e dedicheremo un'appendice finale alle tabelle e ai grafici pi˘ dettagliati.
 \end{enumerate}
-Inoltre, si far√† riferimento alle seguenti formule:
+Inoltre, si far‡ riferimento alle seguenti formule:
 \begin{enumerate}
 	\item media 
 	\begin{equation}\label{eq:media}
@@ -90,33 +92,34 @@ Inoltre, si far√† riferimento alle seguenti formule:
 	\sigma = \sqrt{\sigma^2}.
 	\end{equation}	
 \end{enumerate}
-Le formule dei minimi quadrati utilizzate sono: 
-\begin{itemize}
-	\item coeficiente angolare
-	\begin{equation}\label{eq:coeficienteangolare}
-	\hat{m} = \frac{Cov[x,y]}{Var[x]}
+Per ricavare i parametri della regressione lineare si utilizzeranno le seguenti equazioni: 
+\begin{enumerate}
+	\item coefficiente angolare
+	\begin{equation}\label{eq:coefficienteangolare}
+	\hat{m} = \frac{\overline{xy}-\bar{x}\bar{y}}{\overline{x^2}\bar{x}^2};
 	\end{equation}
 	\item intercetta
 	\begin{equation}\label{eq:intercetta}
-	\hat{c} = \bar{y} - \hat{m} \cdot \bar{x}
+	\hat{c} = \bar{y} - \hat{m} \cdot \bar{x};
 	\end{equation}
 	\item varianza del coefficiente angolare
 	\begin{equation}\label{eq:varianzacoeff}
-	Var[\hat{m}] = \frac{1}{Var[x]\cdot \sum_{i}\frac{1}{\sigma_{y_i}^2}}
+	\var[\hat{m}] = \frac{1}{\var[x]\cdot \sum_{i}\frac{1}{\sigma_{y_i}^2}};
 	\end{equation}
 	\item varianza dell'intercetta 
 	\begin{equation}\label{eq:varianzainter}
-	Var[\hat{c}] = \bar{x^2}\cdot Var[\hat{m}]
+	\var[\hat{c}] = \bar{x^2}\cdot \var[\hat{m}];
 	\end{equation}
 	\item covarianza 
 	\begin{equation}\label{eq:cov}
-	Cov[\hat{m}, \hat{c}] = \bar{x} \cdot Var[\hat{m}]
+	\cov[\hat{m}, \hat{c}] = - \frac{\bar{x}}{\var[\hat{m}]\cdot \sum_{i}\frac{1}{\sigma_{y_i}^2}}.
 	\end{equation}
-\end{itemize}
+\end{enumerate}
 
 %===============SCOPO E DESCRIZIONE DELL'ESPERIENZA==============%
 \section{Scopo e descrizione dell'esperienza}
 \label{sec:descrizione}
+Un volano consiste in un disco metallico di momento d'inerzia $I_0$, vincolato a ruotare attorno ad un asse fisso orizzontale passante per il suo centro. Ad esso Ë possibile avvitare, nei pressi del bordo, alcuni bulloni al fine di aumentarne il momento d'inerzia. Esso Ë collegato, mediante un filo passante per una puleggia di massa trascurabile, ad una zavorra che, scendendo, mette in moto rotatorio il disco. Considerando il filo inestensibile e di massa trascurabile si ha che l'accelerazione $a$ a cui scende la zavorra Ë legata all'accelerazione angolare di rotazione del volano $\alpha$ dalla relazione $a = \alpha r$, dove $r$ Ë il raggio del disco pi˘ piccolo, collegato al volano, attorno al quale si avvolge il filo (si veda la figura~\ref{fig:schema_apparato}). Il disco Ë soggetto ad un momento frenante $M_a$ dovuto agli attriti dell'asse di rotazione con la sede entro la quale ruota; inoltre, al volano possono essere applicate delle palette al fine di incrementare l'attrito con l'aria e studiare la velocit‡ limite $v_\text{lim}$ di caduta della zavorra. Nel corso dell'esperienza si daranno le stime di $I_0$, $M_a$ e del coefficiente di attrito viscoso con l'aria $k$.
 
 
 
@@ -124,39 +127,38 @@ Le formule dei minimi quadrati utilizzate sono:
 \section{Apparato Sperimentale}
 \subsection{Strumenti}
 \label{subsec:strumenti}
-
 \begin{itemize}
-	\item Volano 
 	\item Sensore di posizione che misura la posizione della massa $m$ a tempi diversi;
-	\item metro [divisione: \SI{0.001}{m}, incertezza: \SI{0.0003}{m}];
-	\item calibro ventesimale [divisione \SI{0,05}{mm}, incertezza \SI{0,05}{mm}, portata \SI{20}{cm}];
-	\item bilancia di precisione [portata: \SI{2000}{g}, incertezza: \SI{0.03}{g}];
+	\item Metro [divisione: \SI{0.001}{m}, incertezza: \SI{0.0003}{m}];
+	\item Calibro ventesimale [divisione \SI{0,05}{mm}, incertezza \SI{0,05}{mm}, portata \SI{20}{cm}];
+	\item Bilancia di precisione [portata: \SI{2000}{g}, incertezza: \SI{0.03}{g}];
 \end{itemize}
 \subsection{Campioni}
 \begin{itemize}
-	\item $10$ coppie di bulloni da inserire sul disco del Volano; 
+	\item Volano; 
+	\item $10$ coppie di bulloni da inserire sul disco del volano; 
 	\item $2$ palette per aumentare l'attrito del mezzo.
 \end{itemize}
 
 %==================SEQUENZA OPERAZIONI SPERIMENTALI==========
 \section{Sequenza Operazioni Sperimentali} 
 
-\subsecion{Estrazione del momento della forza d'attrito e del momento d'inerzia}
+\subsection{Estrazione del momento della forza d'attrito e del momento d'inerzia}
 
-Inserendo due coppie di bulloni per misura, senza compromettere la simmetria del sistema analizzato, studiamo il moto di discesa della massa $m$. Per ogni coppia di bulloni sono state acquisite $10$ misure di velocit√† in funzione del tempo. Le diverse stime dell'accelerazione sono ottenute dal coeficente angolare dei grafici di tali velocit√†. Ognuna delle misure di accelerazione cos√¨ ottenute √® affetta da un incertezza fornitaci dal programma \emph{Data Studio}. Poich√® queste incertezze sono disomogenee, per tenerne conto realizziamo una media pesata per ogni raccolta. I dati sono riportati nella tabella (inserire riferimento) con le rispettive incertezze, ottenute sommando in quadratura l'incertezza da associare alla media pesata (per definizione $\frac{1}{\sqrt{\sum_{i}p_i}}$, con $p_i = \frac{1}{\sigma_{a_i}^2}$) e la deviazione standard della media ($\sigma/\sqrt{10}$).
-Poich√® l'inverso dell'accelerazione e il numero di bulloni inseriti sono legati da una relazione lineare √® possibile ottenere una stima del momento d'inerzia del disco del volano, $I_0$, e del momento dell'attrito radente, $M_a$. Partendo dalle equazioni cardinali della dinamica otteniamo tale relazione per l'inverso dell'accelerazione: 
+Inserendo due coppie di bulloni per misura, senza compromettere la simmetria del sistema analizzato, studiamo il moto di discesa della massa $m$. Per ogni coppia di bulloni sono state acquisite $10$ misure di velocit‡ in funzione del tempo. Le diverse stime dell'accelerazione sono ottenute dal coefficiente angolare delle rette che interpolano tali velocit‡. Ognuna delle misure di accelerazione cosÏ ottenute Ë affetta da un'incertezza fornitaci dal programma \emph{DataStudio\textsuperscript\textregistered}. PoichÈ queste incertezze sono disomogenee, per tenerne conto calcoliamo la media pesata dell'accelerazione per ogni raccolta. I dati sono riportati nella tabella~\ref{tab:accvsbulloni} con le rispettive incertezze, ottenute sommando in quadratura l'incertezza da associare alla media pesata (per definizione $1/\sqrt{\sum_{i}p_i}$, con $p_i = 1 / \sigma_{a_i}^2$) e la deviazione standard della media ($\sigma/\sqrt{10}$).
+PoichÈ l'inverso dell'accelerazione e il numero di bulloni inseriti sono legati da una relazione lineare Ë possibile ottenere una stima del momento d'inerzia del disco del volano, $I_0$, e del momento dell'attrito radente, $M_a$. Partendo dalle equazioni cardinali della dinamica otteniamo: 
 	
 	\begin{equation}\label{eq:equazioneretta}
 	\frac{1}{a}= A + B\cdot n
 	\end{equation}
 	
-dove $n$ √® il numero di coppie di bulloni, mente \emph{$A$} e \emph{$B$} sono rispettivamente :
+dove $n$ Ë il numero di coppie di bulloni, mente \emph{$A$} e \emph{$B$} sono rispettivamente :
 	
 	\begin{equation}\label{eq:intercettaecoefficente}
-	A = \frac{mr^2+I_0}{mgr^2-M_a r}; \qquad B = \frac{2m_b R^2}{mgr^2-m_a r}.
+	A = \frac{mr^2+I_0}{mgr^2-M_a r}; \qquad B = \frac{2m_b R^2}{mgr^2-M_a r}.
 	\end{equation}
 
-Una volta sitmati, utilizzado il metodo dei minimi quadrati, intercetta ($A$) e coeficente angolare ($B$) della retta che meglio approssima i punti sperimentali, ricaviamo:
+Una volta stimati, utilizzando il metodo dei minimi quadrati, l'intercetta ($A$) e il coefficiente angolare ($B$) della retta che meglio approssima i punti sperimentali, ricaviamo:
 
 \begin{equation}\label{eq:momentoattrito}
 M_a = mgr - \frac{2m_b R^2}{Br}
@@ -168,80 +170,78 @@ I_0 = 2m_bR^2 \frac{A}{B} - mr^2
 
 Dove i parametri rappresentano rispettivamente:
 \begin{itemize}
-	\item $m$ :massa appesa al filo inestensibile del volano 
-	\item $m_b$ :media delle masse dei $16$ bulloni 
-	\item $r$ :raggio della puleggia 
-	\item $R$ :distanza tra l'asse di rotazione del volano e i bulloni 
-	\item $g$ :accelerazione di gravit√† 
+	\item $m$: massa appesa al filo inestensibile del volano; 
+	\item $m_b$: media delle masse dei $16$ bulloni; 
+	\item $r$: raggio del dischetto attaccato al volano attorno al quale si avvolge il filo;
+	\item $R$: distanza tra l'asse di rotazione del volano e il centro di massa dei bulloni;
+	\item $g$: accelerazione di gravit‡, data, in questo caso, dal valore senza incertezza di \SI{9.803}{m/s^2}. 
 \end{itemize}
 
 
-Gli errori da associare alla stima di $M_a$ e $I_0$ sono dati dalla propagazione delle incertezze. Derivando parzialmente rispetto ai parametri delle quazioni \ref{eq:momentoattrito} e \ref{eq:momentoinerzia} otteniamo:
+Gli errori da associare alla stima di $M_a$ e $I_0$ sono dati dalla propagazione delle incertezze. Derivando parzialmente rispetto ai parametri delle equazioni~\ref{eq:momentoattrito} e~\ref{eq:momentoinerzia} otteniamo:
 
 \begin{equation}\label{eq:incertezzamomentoattrito}
-\sigma_{M_a}= M_a \cdot \sqrt{ \frac {\partial{M_a}}{ \partial m} ^2 \cdot \sigma_m^2 + \frac {\partial{M_a}}{ \partial r} ^2 \cdot \sigma_r^2 + \frac {\partial{M_a}}{ \partial R} ^2 \cdot \sigma_R^2 + \frac {\partial{M_a}}{ \partial m_b} ^2 \cdot \sigma_{m_b}^2 + \frac {\partial{M_a}}{ \partial B} ^2 \cdot \sigma_{B}^2 }
+\sigma_{M_a}^2= \frac {\partial{M_a}}{ \partial m} ^2 \cdot \sigma_m^2 + \frac {\partial{M_a}}{ \partial r} ^2 \cdot \sigma_r^2 + \frac {\partial{M_a}}{ \partial R} ^2 \cdot \sigma_R^2 + \frac {\partial{M_a}}{ \partial m_b} ^2 \cdot \sigma_{m_b}^2 + \frac {\partial{M_a}}{ \partial B} ^2 \cdot \sigma_{B}^2 
 \end{equation}
 
-Dove con $\sigma_m$,  $\sigma_R$, $\sigma_r$ e $\sigma_{m_b}$ intendiamo l'incertezza sulla massa, sulla distanza tra asse di rotazione e bulloni, sul raggio della puleggia e sulla massa dei bulloni date dalle rispettive incertezze strumentali. Con $\sigma_B$ indichiamo ivece l'errore sul coeficiente angolare stimato con il metodo dei mini quadrati. \newline
-Derivando parzialmente si ottiene:
+Dove con $\sigma_m$, $\sigma_R$ e $\sigma_r$ intendiamo l'incertezza sulla massa, sulla distanza tra asse di rotazione e bulloni e sul raggio del dischetto date dalle rispettive incertezze strumentali, e con $\sigma_{m_b}$ l'incertezza sul valor medio della massa dei bulloni, data dalla somma in quadratura dell'incertezza strumentale e statistica (deviazione standard della media). Con $\sigma_B$ indichiamo invece l'errore sul coefficiente angolare stimato con il metodo dei minimi quadrati (in particolare Ë la radice della varianza calcolata con~\ref{eq:varianzacoeff}).
 
-\begin{align*}\label{eq:parziali}
-\frac{\partial{M_a}}{ \partial m} &=g\cdot r \\
-\frac{\partial{M_a}}{ \partial r} &=mg + \frac{2m_b R^2}{Br^2}\\
-\frac{\partial{M_a}}{ \partial R} &=-\frac{4m_bR}{Br} \\
-\frac{\partial{M_a}}{ \partial B} &=\frac{2m_b R^2}{B^2 r}\\
-\frac{\partial{M_a}}{ \partial m_b} &=-\frac{2R^2}{Br} \\
-\end{align*}
+Derivando parzialmente si ottiene dalla~\ref{eq:incertezzamomentoattrito}:
+\small{
+\begin{equation}
+\sigma_{M_a}^2= (gr)^2 \cdot \sigma_m^2 + \left(mg + \frac{2m_b R^2}{Br^2}\right) ^2 \cdot \sigma_r^2 + \left(-\frac{4m_bR}{Br}\right)^2 \cdot \sigma_R^2 + \left(-\frac{2R^2}{Br}\right)^2 \cdot \sigma_{m_b}^2 + \left(\frac{2m_b R^2}{B^2 r}\right)^2 \cdot \sigma_{B}^2 
+\end{equation}
+}
 
-
-L'errore sul momento d'inerzia del volano √® ottenuto con lo stesso procedimento, per cui: 
+L'errore sul momento d'inerzia del volano Ë ottenuto con lo stesso procedimento, per cui:
+\small{ 
 \begin{equation}\label{eq:incertezzamomentoinerzia}
-\sigma_{I_0} = I_0 \cdot \sqrt{ \frac {\partial{I_0}}{ \partial m} ^2 \cdot \sigma_m^2 + \frac {\partial{I_0}}{ \partial r} ^2 \cdot \sigma_r^2 + \frac {\partial{I_0}}{ \partial R} ^2 \cdot \sigma_R^2 + \frac {\partial{I_0}}{ \partial m_b} ^2 \cdot \sigma_{m_b}^2+ \frac {\partial{I_0}}{\partial B} ^2 \cdot \sigma_{B}^2 + \frac {\partial{I_0}}{\partial A} ^2 \cdot \sigma_{A}^2 + 2 \frac{\partial M_a}{\partial B} \frac{\partial M_a}{\partial A} cov(A, B)}
+\sigma_{I_0}^2 = \frac {\partial{I_0}}{ \partial m} ^2 \cdot \sigma_m^2 + \frac {\partial{I_0}}{ \partial r} ^2 \cdot \sigma_r^2 + \frac {\partial{I_0}}{ \partial R} ^2 \cdot \sigma_R^2 + \frac {\partial{I_0}}{ \partial m_b} ^2 \cdot \sigma_{m_b}^2+ \frac {\partial{I_0}}{\partial B} ^2 \cdot \sigma_{B}^2 + \frac {\partial{I_0}}{\partial A} ^2 \cdot \sigma_{A}^2 + 2 \frac{\partial I_0}{\partial B} \frac{\partial I_0}{\partial A} \cov(A, B)
 \end{equation} 
+}
 
- Dove le incertezze sono le stesse citate precedentemente, eccetto per $\sigma_A$ che indica l'errore sull'intercetta anch'esso stimato con il metodo dei minimi quadrati. In questo caso √® necessario anche tener conto della correlazione tra i parametri $A$ e $B$, perci√≤ viene inserito anche il termine di covarianza. Derivando si ottiene: 
- \begin{align*}\label{eq:partialI}
- \frac{\partial{I_0}}{ \partial m} &=-r^2 \\
- \frac{\partial{I_0}}{ \partial r} &=-2mr\\
- \frac{\partial{I_0}}{ \partial R} &= 4Rm_b \frac{A}{B}\\
- \frac{\partial{I_0}}{ \partial m_b} &= 2R^2 \frac{A}{B}\\
- \frac{\partial{I_0}}{ \partial B} &= -\frac{2m_bR^2 A}{B^2}\\
- \frac{\partial{I_0}}{ \partial A} &=\frac{2m_bR^2}{B} \\
-\end{align*}
-
-I valori dei parametri $A$ e $B$ ottenuti sono: 
-
+Dove le incertezze sono le stesse citate precedentemente, eccetto per $\sigma_A$ che indica l'errore sull'intercetta anch'esso stimato con il metodo dei minimi quadrati (in particolare con la radice della varianza~\ref{eq:varianzainter}). PoichÈ i parametri $A$ e $B$ sono stati stimati a partire dallo stesso insieme di dati, si Ë reso necessario inserire anche il termine di covarianza. Derivando e sostituendo nella~\ref{eq:incertezzamomentoinerzia} si ottiene: 
 \begin{equation}
-\boxed{\bf{A = \pm }}
-\end{equation}
-\begin{equation}
-\boxed{\bf{B = \pm }}
-\end{equation}
-
-Nella figura (inserire riferimento) √® riportato il grafico di $\frac{1}{a}$ in funzione del numero di coppie di bulloni. I valori di intercetta e coeficiente angolare della retta forniti dal softwer di analisi dati \emph{R} sono: 
-\begin{equation}
-B = 5.511 \qquad A = 19.750
-\end{equation}
-che risultano compatibili con le stime realtizzate manualmente di tali parametri. 
-
-La migliore stima di $M_a$ sar√† quindi: 
-\begin{equation}
-\boxed{\bf{M_a = \pm }}
-\end{equation}
-
-Mentre la migliore stima di $I_0$ √®: 
-\begin{equation}
-\boxed{\bf{I_0 = \pm }}
+\begin{split}
+\sigma_{I_0}^2 = (-r^2)^2 \cdot \sigma_m^2 + (-2mr)^2 \cdot \sigma_r^2 + \left(4Rm_b \frac{A}{B}\right)^2 \cdot \sigma_R^2 + \left(2R^2 \frac{A}{B}\right)^2 \cdot \sigma_{m_b}^2+ \\ 
++ \left(-\frac{2m_bR^2 A}{B^2}\right)^2 \cdot \sigma_{B}^2 + \left(\frac{2m_bR^2}{B}\right)^2 \cdot \sigma_{A}^2 + 2 \left(-\frac{2m_bR^2 A}{B^2}\right) \left(\frac{2m_bR^2}{B}\right) \cov(A, B)
+\end{split} 
 \end{equation}
 
 
+I valori dei parametri $A$ e $B$ ottenuti con le equazioni~\ref{eq:coefficienteangolare} e \ref{eq:intercetta}, a partire dai dati riportati in tabella~\ref{accvsbulloni} sono: 
 
-\subsecion{Studio della perdita di energia potenziale gravitazionale a causa dell'attrito}
+\begin{equation}
+\boxed{\bf{A = \SI{19.71 \pm 0.09}{s^2 / m}}};
+\end{equation}
+\begin{equation}
+\boxed{\bf{B = \SI{5.52 \pm 0.03}{s^2 / m}}}.
+\end{equation}
 
-\subsection{studio del moto del volano in presenza di attrito del mezzo}
+In figura~\ref{fig:n_vs_inva} Ë riportato il grafico di $1 / a$ in funzione del numero $n$ di coppie di bulloni avvitate sul volano.
+%I valori di intercetta e coeficiente angolare della retta forniti dal softwer di analisi dati \emph{R} sono: 
+%\begin{equation}
+%B = 5.511 \qquad A = 19.750
+%\end{equation}
+%che risultano compatibili con le stime realtizzate manualmente di tali parametri. 
+
+La migliore stima di $M_a$ Ë quindi: 
+\begin{equation}
+\boxed{\bf{M_a = \SI{0.0022 \pm 0.0006}{N m}}};
+\end{equation}
+mentre la migliore stima di $I_0$ Ë: 
+\begin{equation}
+\boxed{\bf{I_0 = \SI{0.01170 \pm 0.00012}{kg m^2}}}.
+\end{equation}
+
+
+
+\subsection{Studio della perdita di energia potenziale gravitazionale a causa del momento di attrito}
+
+\subsection{Studio del moto del volano in presenza di attrito del mezzo}
 
 %========================= CONCLUSIONI =============
-\section{considerazioni Finali}
+\section{Considerazioni finali}
 
 \pagebreak
 %=================APPENDICE==================================
