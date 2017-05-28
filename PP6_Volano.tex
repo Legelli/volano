@@ -90,7 +90,29 @@ Inoltre, si farà riferimento alle seguenti formule:
 	\sigma = \sqrt{\sigma^2}.
 	\end{equation}	
 \end{enumerate}
-
+Le formule dei minimi quadrati utilizzate sono: 
+\begin{itemize}
+	\item coeficiente angolare
+	\begin{equation}\label{eq:coeficienteangolare}
+	\hat{m} = \frac{Cov[x,y]}{Var[x]}
+	\end{equation}
+	\item intercetta
+	\begin{equation}\label{eq:intercetta}
+	\hat{c} = \bar{y} - \hat{m} \cdot \bar{x}
+	\end{equation}
+	\item varianza del coefficiente angolare
+	\begin{equation}\label{eq:varianzacoeff}
+	Var[\hat{m}] = \frac{1}{Var[x]\cdot \sum_{i}\frac{1}{\sigma_{y_i}^2}}
+	\end{equation}
+	\item varianza dell'intercetta 
+	\begin{equation}\label{eq:varianzainter}
+	Var[\hat{c}] = \bar{x^2}\cdot Var[\hat{m}]
+	\end{equation}
+	\item covarianza 
+	\begin{equation}\label{eq:cov}
+	Cov[\hat{m}, \hat{c}] = \bar{x} \cdot Var[\hat{m}]
+	\end{equation}
+\end{itemize}
 
 %===============SCOPO E DESCRIZIONE DELL'ESPERIENZA==============%
 \section{Scopo e descrizione dell'esperienza}
@@ -100,7 +122,21 @@ Inoltre, si farà riferimento alle seguenti formule:
 
 %================APPARATO SPERIMENTALE======================%		
 \section{Apparato Sperimentale}
+\subsection{Strumenti}
+\label{subsec:strumenti}
 
+\begin{itemize}
+	\item Volano 
+	\item Sensore di posizione che misura la posizione della massa $m$ a tempi diversi;
+	\item metro [divisione: \SI{0.001}{m}, incertezza: \SI{0.0003}{m}];
+	\item calibro ventesimale [divisione \SI{0,05}{mm}, incertezza \SI{0,05}{mm}, portata \SI{20}{cm}];
+	\item bilancia di precisione [portata: \SI{2000}{g}, incertezza: \SI{0.03}{g}];
+\end{itemize}
+\subsection{Campioni}
+\begin{itemize}
+	\item $10$ coppie di bulloni da inserire sul disco del Volano; 
+	\item $2$ palette per aumentare l'attrito del mezzo.
+\end{itemize}
 
 %==================SEQUENZA OPERAZIONI SPERIMENTALI==========
 \section{Sequenza Operazioni Sperimentali} 
