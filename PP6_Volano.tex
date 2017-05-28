@@ -237,7 +237,7 @@ mentre la migliore stima di $I_0$ è:
 
 
 \subsection{Studio della perdita di energia potenziale gravitazionale a causa del momento di attrito}
-L'apparato strumentale non è esente da attriti interni (come può essere l'allineamento non perfetto tra asse di rotazione e momento angolare del volano) ed esterni (l'aria): complessivamente si genera un momento d'attrito di verso opposto a quello generato dalla rotazione del volano che dissipa energia, causando gradualmente un abbassamento della quota massima raggiunta dalla massa appesa fino all'arresto del sistema. Nel grafico \ref{fig:dVSt} si riporta la distanza della massa dal sensore in funzione del tempo: la minima quota raggiunta (che corrisponde alla massima distanza dal sensore) si mantiene circa costante nel tempo\footnote{Le visibili variazioni iniziali sono dovute all'estensibilità del filo che sottoposto a tensione si allunga; poiché la tensione è direttamente proporzionale all'altezza da cui la massa parte si riscontra un allungamento maggiore nella fase iniziale.}, ed è pari alla lunghezza complessiva del filo che collega la massa al volano meno la distanza tra il centro del volano e il sensore; l'energia dissipata dall'attrito causa un abbassamento della quota massima, alla quale la massa riesce a risalire, trasformando la differenza di energia potenziale gravitazionale $U = g\Delta h$ in calore: se il modulo del momento di attrito rimane costante nel tempo, il rapporto $\Delta h / h$ rimarrà costante a sua volta; nel grafico \ref{fig:dVSt} si riportano in rosso le quote massime $h$ e in blu le differenze di quota $\Delta h$ a titolo esemplificativo per i primi cinque eventi.
+L'apparato strumentale non è esente da attriti interni (come può essere l'allineamento non perfetto tra asse di rotazione e momento angolare del volano) ed esterni (l'aria): complessivamente si genera un momento d'attrito di verso opposto a quello generato dalla rotazione del volano che dissipa energia, causando gradualmente un abbassamento della quota massima raggiunta dalla massa appesa fino all'arresto del sistema. Nel grafico \ref{fig:dVSt} si riporta la distanza della massa dal sensore in funzione del tempo: la minima quota raggiunta (che corrisponde alla massima distanza dal sensore) si mantiene circa costante nel tempo\footnote{Le visibili variazioni iniziali sono dovute all'estensibilità del filo che sottoposto a tensione si allunga; poiché la tensione è direttamente proporzionale all'altezza da cui la massa parte si riscontra un allungamento maggiore nella fase iniziale.}, ed è pari alla lunghezza complessiva del filo che collega la massa al volano meno la distanza tra il centro del volano e il sensore; l'energia dissipata dall'attrito causa un abbassamento della quota massima, alla quale la massa riesce a risalire, trasformando la differenza di energia potenziale gravitazionale $U = mg\Delta h$ in calore: se il modulo del momento di attrito rimane costante nel tempo, il rapporto $\Delta h / h$ rimarrà costante a sua volta; nel grafico \ref{fig:dVSt} si riportano in rosso le quote massime $h$ e in blu le differenze di quota $\Delta h$ a titolo esemplificativo per i primi cinque eventi.
 
 \begin{figure}
 \caption{Posizione della zavorra in funzione del tempo in assenza di attrito del mezzo}
@@ -249,7 +249,7 @@ L'apparato strumentale non è esente da attriti interni (come può essere l'alline
 \paragraph{Indipendenza di $\Delta h / h$ da $t$} Per verificare il nostro modello, il quale prevede che il momento d'attrito resti costante in modulo nel tempo, si intende verificare la validità di
 \[
 	\frac{ d \left( \Delta h / h\right)}{dt} = 0,
-\] per farlo si esegue una regressione lineare del rapporto $\Delta h / h$ in funzione del tempo e si studia la compatibilità con $m = 0$ del coefficiente angolare ricavato dell'interpolazione: con il programma in \textbf{C} riportato nel listato \ref{lst:ricerca_max_min} si estraggono dai dati di \emph{Data Studio} i valori massimi e minimi relativi della quota e i tempi ai quali questi nuovi minimi (che, ricordiamo, corrispondono alla quota massima relativa) vengono raggiunti, il programma restituisce direttamente due file contenti i valori di $\Delta h / h$ e di tempo, questi vengono elaborati con \emph{R} ottenendo l'interpolazione riportata in figura \ref{fig:dhVSt} avente come coefficiente angolare
+\] per farlo si esegue una regressione lineare del rapporto $\Delta h / h$ in funzione del tempo e si studia la compatibilità con $m = 0$ del coefficiente angolare ricavato dell'interpolazione: con il programma in \textbf{C} riportato nel listato \ref{lst:ricerca_max_min} si estraggono dai dati di \emph{DataStudio\textsuperscript\textregistered} i valori massimi e minimi relativi della quota e i tempi ai quali questi nuovi minimi (che, ricordiamo, corrispondono alla quota massima relativa) vengono raggiunti, il programma restituisce direttamente due file contenti i valori di $\Delta h / h$ e di tempo, questi vengono elaborati con \emph{R} ottenendo l'interpolazione riportata in figura \ref{fig:dhVSt} avente come coefficiente angolare
 \[
 	m = \SI{-0.00020 \pm 0.00002}{t^{-1}};
 \]
@@ -271,17 +271,17 @@ analizzando il grafico si evidenzia un'importante tendenza a decrescere con l'au
 \includegraphics[scale=0.8]{istogramma_dh.eps} 
 \end{figure}
 
-Con l'approssimazione $\Delta h / h = \SI{0.059 \pm 0.00286}{}$, dove l'incertezza è la deviazione standard della media, vale la relazione
+Con l'approssimazione $\Delta h / h = \SI{0.059 \pm 0.003}{}$, dove l'incertezza è la deviazione standard della media, vale la relazione	
 \begin{equation}
 	M_a = \frac{m g r \frac{\Delta h}{h}}{2- \frac{\Delta h}{h}}
 \end{equation}
 che lega il momento d'attrito $M_a$ al rapporto preso in esame, propagando l'incertezza su quest'equazione si ottiene
 \begin{align}
 	\sigma_{M_a} &= M_a \sqrt{ \left( \frac{ \sigma_{mgr\Delta h/h}}{mgr \Delta h / h} \right)^2 + \left( \frac{ \sigma_{2-\Delta h / h}}{2 - \Delta h/h} \right)^2 } \notag \\
-		&= M_a \sqrt{ \left( \frac{ \left( g r \frac{ \Delta h }{h} \right) ^2 \sigma_m^2 + \left( m g \frac{ \Delta h}{h} \right)^2 \sigma_r^2 + \left( m g r \right)^2 \sigma_{\Delta h /h} }{m g r \Delta h / h} \right)^2 + \left( \frac{ \sigma_{\Delta h / h}}{2 - \Delta h / h} \right)^2 };
+		&= M_a \sqrt{ \left( \frac{ \sqrt{\left( g r \frac{ \Delta h }{h} \right) ^2 \sigma_m^2 + \left( m g \frac{ \Delta h}{h} \right)^2 \sigma_r^2 + \left( m g r \right)^2 \sigma_{\Delta h /h}^2 }}{m g r \Delta h / h} \right)^2 + \left( \frac{ \sigma_{\Delta h / h}}{2 - \Delta h / h} \right)^2 };
 \end{align} svolgendo i calcoli si raggiunge la miglior stima del momento d'attrito pari a
 \begin{equation}
-\boxed{\bf{M_a = \SI{0.0018 \pm 0.0004}{N m}}}.
+\boxed{\bf{M_a = \SI{0.00177 \pm 0.00009}{N m}}}.
 \end{equation}
 
 La differenza tra questa stima e quella ottenuta nella sezione \ref{subsec:prima} è compatibile con 0 in meno di una \emph{sigma}\footnote{Il confronto è stato fatto avendo tenuto conto che la differenza di due gaussiane è ancora una gaussiana.}, il che ci porta a concludere che le due stime sono tra loro compatibili.
@@ -297,13 +297,13 @@ Il moto della zavorra e del volano in presenza di attrito del mezzo è descritto 
 \frac{d v}{d t} = \frac{1}{\tau}(v_\text{lim} - v)
 \]
 ove con $\tau$ si indica il tempo caratteristico,
-\[
+\begin{equation}\label{eq:tau}
 \tau = \frac{mr^2 + I_0}{kr^2};
-\]
+\end{equation}
 la precedente equazione ha soluzione
-\[
+\begin{equation}\label{eq:v_vlim}
 v = v_\text{lim}(1 - e^{-t / \tau}).
-\]
+\end{equation}
 Con $k$ si indica il coefficiente di attrito dell'aria, che è legato alla velocità per determinare il momento di attrito del mezzo dall'equazione di Stokes
 \[
 M_v = k v r,
@@ -313,14 +313,41 @@ la velocità limite è invece espressa dall'equazione
 v_\text{lim} = \frac{mgr^2 - M_a r}{kr^2},
 \]
 da cui si ricava
-\[
+\begin{equation}\label{eq:k_aria}
 k = \frac{mgr^2 - M_a r}{v_\text{lim}r^2}.
-\]
+\end{equation}
 Si ottiene perciò per il coefficiente di attrito il valore
 \[
 \boxed{\bf{k = \SI{79.4 \pm 0.4}{kg / s}}},
 \]
-con incertezza propagata
+con incertezza calcolata propagando sull'equazione~\ref{eq:k_aria}, ottenendo
+\begin{align*}
+\sigma_k^2 &= \left( \frac{\partial k}{\partial m} \right)^2 \sigma_m^2 + \left( \frac{\partial k}{\partial r} \right)^2 \sigma_r^2 + \left( \frac{\partial k}{\partial M_a} \right)^2 \sigma_{M_a}^2 + \left( \frac{\partial k}{\partial v_\text{lim}} \right)^2 \sigma_{v_\text{lim}}^2 \\
+	& = \left( \frac{g}{v_\text{lim}} \right)^2 \sigma_m^2 + \left( \frac{(2mgr-M_a)(r^2v_\text{lim})-(mgr^2-M_a)\cdot 2 v_\text{lim}}{(v_\text{lim}r^2)^2} \right)^2 \sigma_r^2 + \left( \frac{1}{v_\text{lim}r} \right)^2 \sigma_{M_a}^2 + \left( \frac{M_ar-mgr^2}{r^2v_\text{lim}^2} \right)^2 \sigma_{v_\text{lim}}^2.
+\end{align*}
+
+Riteniamo che eventuali discrepanze della nostra stima dal \emph{valore vero}\footnote{È qui doveroso enfatizzare questo termine in quanto l'attrito con l'aria, essendo dovuto al moto casuale delle particelle che compongono il mezzo, non può essere esplicitato con una rigorosa trattazione meccanica, pertanto il coefficiente ha solo valore indicativo della influenza sul moto del corpo.} siano dovute alla eventuale non dipendenza lineare del momento d'attrito con l'aria dalla velocità. L'incertezza, dell'ordine dello $0.5\%$ è dovuta alle misure del raggio del dischetto attorno a cui si avvolge il filo e alla precedente stima del momento d'attrito frenante, oltre all'errore statistico sulla media della velocità limite poiché, come si nota dal grafico~\ref{fig:vel_attrito_aria}, la velocità oscilla in modo consistente attorno a $v_\text{lim}$.
+
+Nel grafico di figura~\ref{fig:v_vlim} si riporta il logaritmo naturale della differenza tra il valore della velocità limite e quello della velocità fratto la velocità limite in funzione del tempo.
+
+Calcoliamo inoltre il tempo caratteristico $\tau$ con l'equazione~\ref{eq:tau}, ossia il tempo al quale la velocità è pari al $63.2\%$ della velocità limite ($v = \left(1 - \frac{1}{2}\right)v_\text{lim}$):
+\[
+\boxed{\bf{\tau = \SI{1.30 \pm 0.03}{s}}};
+\]
+come termine di confronto possiamo realizzare un fit dei punti sperimentali riportati nel già citato grafico di figura~\ref{fig:v_vlim}. Dall'equazione~\ref{eq:v_vlim} si ha che le grandezze rappresentate sono legate dalla relazione
+\[
+\log\left(\frac{v_\text{lim} - v}{v_\text{lim}}\right) = -\frac{1}{\tau}t,
+\]
+dunque il coefficiente angolare rappresenta una stima dell'inverso del reciproco del tempo caratteristico. Utilizzando l'equazione~\ref{eq:coefficienteangolare} si ottiene la stima, accompagnata dall'incertezza calcolata con la radice del risultato dell'equazione~\ref{eq:varianzacoeff},
+\[
+-\frac{1}{\tau} = \SI{-0.559 \pm 0.018}{s^{-1}};
+\]
+da questa si ottiene la misura del tempo caratteristico
+\[
+\tau = \SI{1.79 \pm 0.06}{s^{-1}},
+\]
+compatibile entro $7$ \emph{sigma} con il valore ricavato precedentemente. Si sottolinea che l'incertezza sui valori dell'ordinata, ossia del logaritmo del rapporto tra differenza di velocità limite e velocità e velocità limite, è stata assunta uguale per tutti i $14$ punti sperimentali, selezionati dai $1168$ a disposizione in quanto la frequenza di campionamento del sensore non permetteva di apprezzare le differenze di velocità nel corso del tempo.
+
 
 \begin{figure}
 \caption{Posizione della zavorra in funzione del tempo in presenza di attrito del mezzo}
@@ -334,6 +361,13 @@ con incertezza propagata
 \label{fig:vel_attrito_aria}
 \centering
 \includegraphics[scale=0.8]{vel_attrito_aria.eps} 
+\end{figure}
+
+\begin{figure}
+\caption{Logaritmo del rapporto tra la differenza di $v_\text{lim}$ e $v$ e la velocità limite in funzione del tempo}
+\label{fig:v_vlim}
+\centering
+\includegraphics[scale=0.8]{logvst.eps} 
 \end{figure}
 
 
