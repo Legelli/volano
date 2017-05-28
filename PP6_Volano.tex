@@ -143,7 +143,7 @@ Un volano consiste in un disco metallico di momento d'inerzia $I_0$, vincolato a
 %==================SEQUENZA OPERAZIONI SPERIMENTALI==========
 \section{Sequenza Operazioni Sperimentali} 
 
-\subsection{Estrazione del momento della forza d'attrito e del momento d'inerzia}
+\subsection{Estrazione del momento della forza d'attrito e del momento d'inerzia}\label{subsec:prima}
 
 Inserendo due coppie di bulloni per misura, senza compromettere la simmetria del sistema analizzato, studiamo il moto di discesa della massa $m$. Prima di cominciare l'acquisizione si verifica la linearità e la correttezza della misura di posizione del sensore, verificando la lunghezza in alcuni punti con il metro. Per ogni coppia di bulloni sono state acquisite $10$ misure di velocità in funzione del tempo. Le diverse stime dell'accelerazione sono ottenute dal coefficiente angolare delle rette che interpolano tali velocità. Ognuna delle misure di accelerazione così ottenute è affetta da un'incertezza fornitaci dal programma \emph{DataStudio\textsuperscript\textregistered}. Poiché queste incertezze sono disomogenee, per tenerne conto calcoliamo la media pesata dell'accelerazione per ogni raccolta. I dati sono riportati nella tabella~\ref{tab:accvsbulloni} con le rispettive incertezze, ottenute sommando in quadratura l'incertezza da associare alla media pesata (per definizione $1/\sqrt{\sum_{i}p_i}$, con $p_i = 1 / \sigma_{a_i}^2$) e la deviazione standard della media ($\sigma/\sqrt{10}$).
 Poiché l'inverso dell'accelerazione e il numero di bulloni inseriti sono legati da una relazione lineare è possibile ottenere una stima del momento d'inerzia del disco del volano, $I_0$, e del momento dell'attrito radente, $M_a$. Partendo dalle equazioni cardinali della dinamica otteniamo: 
@@ -170,7 +170,7 @@ I_0 = 2m_bR^2 \frac{A}{B} - mr^2
 
 Dove si ha:
 \begin{itemize}
-	\item $m$ = \SI{555.00 \pm 0.03 e-3}{kg}: massa appesa al filo inestensibile del volano; 
+	\item $m$ = \SI{555 \pm 0.03 e-3}{kg}: massa appesa al filo inestensibile del volano; 
 	\item $m_b$ = \SI{53.6 \pm 0.2 e-3}{kg}: media delle masse dei $16$ bulloni; 
 	\item $r$ = \SI{1.068 \pm 0.009 e-2}{m}: raggio del dischetto attaccato al volano attorno al quale si avvolge il filo;
 	\item $R$ = \SI{0.1753 \pm 0.0003}{m}: distanza tra l'asse di rotazione del volano e il centro di massa dei bulloni;
@@ -187,18 +187,18 @@ Gli errori da associare alla stima di $M_a$ e $I_0$ sono dati dalla propagazione
 Dove con $\sigma_m$, $\sigma_R$ e $\sigma_r$ intendiamo l'incertezza sulla massa, sulla distanza tra asse di rotazione e bulloni e sul raggio del dischetto date dalle rispettive incertezze strumentali, e con $\sigma_{m_b}$ l'incertezza sul valor medio della massa dei bulloni, data dalla somma in quadratura dell'incertezza strumentale e statistica (deviazione standard della media). Con $\sigma_B$ indichiamo invece l'errore sul coefficiente angolare stimato con il metodo dei minimi quadrati (in particolare è la radice della varianza calcolata con~\ref{eq:varianzacoeff}).
 
 Derivando parzialmente si ottiene dalla~\ref{eq:incertezzamomentoattrito}:
-\small{
+\begin{small}
 \begin{equation}
 \sigma_{M_a}^2= (gr)^2 \cdot \sigma_m^2 + \left(mg + \frac{2m_b R^2}{Br^2}\right) ^2 \cdot \sigma_r^2 + \left(-\frac{4m_bR}{Br}\right)^2 \cdot \sigma_R^2 + \left(-\frac{2R^2}{Br}\right)^2 \cdot \sigma_{m_b}^2 + \left(\frac{2m_b R^2}{B^2 r}\right)^2 \cdot \sigma_{B}^2 
 \end{equation}
-}
+\end{small}
 
 L'errore sul momento d'inerzia del volano è ottenuto con lo stesso procedimento, per cui:
-\small{ 
+\begin{small}
 \begin{equation}\label{eq:incertezzamomentoinerzia}
 \sigma_{I_0}^2 = \frac {\partial{I_0}}{ \partial m} ^2 \cdot \sigma_m^2 + \frac {\partial{I_0}}{ \partial r} ^2 \cdot \sigma_r^2 + \frac {\partial{I_0}}{ \partial R} ^2 \cdot \sigma_R^2 + \frac {\partial{I_0}}{ \partial m_b} ^2 \cdot \sigma_{m_b}^2+ \frac {\partial{I_0}}{\partial B} ^2 \cdot \sigma_{B}^2 + \frac {\partial{I_0}}{\partial A} ^2 \cdot \sigma_{A}^2 + 2 \frac{\partial I_0}{\partial B} \frac{\partial I_0}{\partial A} \cov(A, B)
 \end{equation} 
-}
+\end{small}
 
 Dove le incertezze sono le stesse citate precedentemente, eccetto per $\sigma_A$ che indica l'errore sull'intercetta anch'esso stimato con il metodo dei minimi quadrati (in particolare con la radice della varianza~\ref{eq:varianzainter}). Poiché i parametri $A$ e $B$ sono stati stimati a partire dallo stesso insieme di dati, si è reso necessario inserire anche il termine di covarianza. Derivando e sostituendo nella~\ref{eq:incertezzamomentoinerzia} si ottiene: 
 \begin{equation}
@@ -237,6 +237,54 @@ mentre la migliore stima di $I_0$ è:
 
 
 \subsection{Studio della perdita di energia potenziale gravitazionale a causa del momento di attrito}
+L'apparato strumentale non è esente da attriti interni (come può essere l'allineamento non perfetto tra asse di rotazione e momento angolare del volano) ed esterni (l'aria): complessivamente si genera un momento d'attrito di verso opposto a quello generato dalla rotazione del volano che dissipa energia, causando gradualmente un abbassamento della quota massima raggiunta dalla massa appesa fino all'arresto del sistema. Nel grafico \ref{fig:dVSt} si riporta la distanza della massa dal sensore in funzione del tempo: la minima quota raggiunta (che corrisponde alla massima distanza dal sensore) si mantiene circa costante nel tempo\footnote{Le visibili variazioni iniziali sono dovute all'estensibilità del filo che sottoposto a tensione si allunga; poiché la tensione è direttamente proporzionale all'altezza da cui la massa parte si riscontra un allungamento maggiore nella fase iniziale.}, ed è pari alla lunghezza complessiva del filo che collega la massa al volano meno la distanza tra il centro del volano e il sensore; l'energia dissipata dall'attrito causa un abbassamento della quota massima, alla quale la massa riesce a risalire, trasformando la differenza di energia potenziale gravitazionale $U = g\Delta h$ in calore: se il modulo del momento di attrito rimane costante nel tempo, il rapporto $\Delta h / h$ rimarrà costante a sua volta; nel grafico \ref{fig:dVSt} si riportano in rosso le quote massime $h$ e in blu le differenze di quota $\Delta h$ a titolo esemplificativo per i primi cinque eventi.
+
+\begin{figure}
+\caption{Posizione della zavorra in funzione del tempo in assenza di attrito del mezzo}
+\label{fig:dVSt}
+\centering
+\includegraphics[scale=0.8]{dVSt.eps} 
+\end{figure}
+
+\paragraph{Indipendenza di $\Delta h / h$ da $t$} Per verificare il nostro modello, il quale prevede che il momento d'attrito resti costante in modulo nel tempo, si intende verificare la validità di
+\[
+	\frac{ d \left( \Delta h / h\right)}{dt} = 0,
+\] per farlo si esegue una regressione lineare del rapporto $\Delta h / h$ in funzione del tempo e si studia la compatibilità con $m = 0$ del coefficiente angolare ricavato dell'interpolazione: con il programma in \textbf{C} riportato nel listato \ref{lst:ricerca_max_min} si estraggono dai dati di \emph{Data Studio} i valori massimi e minimi relativi della quota e i tempi ai quali questi nuovi minimi (che, ricordiamo, corrispondono alla quota massima relativa) vengono raggiunti, il programma restituisce direttamente due file contenti i valori di $\Delta h / h$ e di tempo, questi vengono elaborati con \emph{R} ottenendo l'interpolazione riportata in figura \ref{fig:dhVSt} avente come coefficiente angolare
+\[
+	m = \SI{-0.00020 \pm 0.00002}{t^{-1}};
+\]
+analizzando il grafico si evidenzia un'importante tendenza a decrescere con l'aumentare del tempo, inoltre il risultato ottenuto è incompatibile con 0 il quale è a più di 13 \emph{sigma} di distanza dalla media, il che ci porta a concludere che il nostro modello che prevede una costanza nel tempo del modulo del momento d'attrito sia eccessivamente approssimato: riteniamo più concreto un modello che prevede una diretta proporzionalità tra momento d'attrito e velocità. Si riportano in tabella \ref{tab:dh_t} i valori del rapporto $\Delta h / h$ e del tempo dopo il quale è stata raggiunta la rispettiva quota massima.
+
+\begin{figure}
+\caption{Coefficiente $\Delta h / h$ in funzione del tempo}
+\label{fig:dhVSt}
+\centering
+\includegraphics[scale=0.8]{dHvsT.eps} 
+\end{figure}
+
+\paragraph{Stima del momento d'attrito} Poiché il coefficiente $m$ è comunque prossimo a 0 in relazione alle altre grandezze in gioco nel sistema, possiamo approssimare il rapporto $\Delta h / h$ come costante, di modulo pari al valore medio: si riporta in figura \ref{fig:istogramma_dh} l'istogramma del rapporto.
+
+\begin{figure}
+\caption{Distribuzione delle misure di $\Delta h / h$}
+\label{fig:istogramma_dh}
+\centering
+\includegraphics[scale=0.8]{istogramma_dh.eps} 
+\end{figure}
+
+Con l'approssimazione $\Delta h / h = \SI{0.059 \pm 0.00286}{}$, dove l'incertezza è la deviazione standard della media, vale la relazione
+\begin{equation}
+	M_a = \frac{m g r \frac{\Delta h}{h}}{2- \frac{\Delta h}{h}}
+\end{equation}
+che lega il momento d'attrito $M_a$ al rapporto preso in esame, propagando l'incertezza su quest'equazione si ottiene
+\begin{align}
+	\sigma_{M_a} &= M_a \sqrt{ \left( \frac{ \sigma_{mgr\Delta h/h}}{mgr \Delta h / h} \right)^2 + \left( \frac{ \sigma_{2-\Delta h / h}}{2 - \Delta h/h} \right)^2 } \notag \\
+		&= M_a \sqrt{ \left( \frac{ \left( g r \frac{ \Delta h }{h} \right) ^2 \sigma_m^2 + \left( m g \frac{ \Delta h}{h} \right)^2 \sigma_r^2 + \left( m g r \right)^2 \sigma_{\Delta h /h} }{m g r \Delta h / h} \right)^2 + \left( \frac{ \sigma_{\Delta h / h}}{2 - \Delta h / h} \right)^2 };
+\end{align} svolgendo i calcoli si raggiunge la miglior stima del momento d'attrito pari a
+\begin{equation}
+\boxed{\bf{M_a = \SI{0.0018 \pm 0.0004}{N m}}}.
+\end{equation}
+
+La differenza tra questa stima e quella ottenuta nella sezione \ref{subsec:prima} è compatibile con 0 in meno di una \emph{sigma}\footnote{Il confronto è stato fatto avendo tenuto conto che la differenza di due gaussiane è ancora una gaussiana.}, il che ci porta a concludere che le due stime sono tra loro compatibili.
 
 \subsection{Studio del moto del volano in presenza di attrito del mezzo}
 Si montano sul volano, avvitandole con due bulloni, le due palette, di massa \SI{74.30 \pm 0.03}{g} e \SI{74.00 \pm 0.03}{g}, in posizione simmetrica. Si acquisisce la velocità di caduta della zavorra per tre moti successivi; a titolo d'esempio la posizione della massa in funzione del tempo per uno di questi moti è rappresentata nel grafico di figura~\ref{fig:caduta_attrito_aria}, mentre la velocità in funzione del tempo nel grafico di figura~\ref{fig:vel_attrito_aria}. Si osserva dai grafici che la zavorra raggiunge la velocità limite dopo circa \SI{7}{s} dalla partenza, e inverte il moto al termine della caduta dopo circa \SI{23}{s} dalla partenza. Per calcolare la velocità limite $v_\text{lim}$ si calcola dunque la media delle velocità comprese negli intervalli di tempo in cui la zavorra scende a velocità costante per i $3$ set di dati relativi alla caduta, e ad essa si associa un'incertezza data dalla somma in quadratura della deviazione standard divisa per la radice del numero di dati utilizzati, nel nostro caso $2646$, e dell'incertezza strumentale del sensore di posizione, che assumiamo sia pari all'ultimo digit diviso $\sqrt{12}$. Si ottiene il valore
