@@ -145,7 +145,7 @@ Un volano consiste in un disco metallico di momento d'inerzia $I_0$, vincolato a
 
 \subsection{Estrazione del momento della forza d'attrito e del momento d'inerzia}
 
-Inserendo due coppie di bulloni per misura, senza compromettere la simmetria del sistema analizzato, studiamo il moto di discesa della massa $m$. Per ogni coppia di bulloni sono state acquisite $10$ misure di velocità in funzione del tempo. Le diverse stime dell'accelerazione sono ottenute dal coefficiente angolare delle rette che interpolano tali velocità. Ognuna delle misure di accelerazione così ottenute è affetta da un'incertezza fornitaci dal programma \emph{DataStudio\textsuperscript\textregistered}. Poiché queste incertezze sono disomogenee, per tenerne conto calcoliamo la media pesata dell'accelerazione per ogni raccolta. I dati sono riportati nella tabella~\ref{tab:accvsbulloni} con le rispettive incertezze, ottenute sommando in quadratura l'incertezza da associare alla media pesata (per definizione $1/\sqrt{\sum_{i}p_i}$, con $p_i = 1 / \sigma_{a_i}^2$) e la deviazione standard della media ($\sigma/\sqrt{10}$).
+Inserendo due coppie di bulloni per misura, senza compromettere la simmetria del sistema analizzato, studiamo il moto di discesa della massa $m$. Prima di cominciare l'acquisizione si verifica la linearità e la correttezza della misura di posizione del sensore, verificando la lunghezza in alcuni punti con il metro. Per ogni coppia di bulloni sono state acquisite $10$ misure di velocità in funzione del tempo. Le diverse stime dell'accelerazione sono ottenute dal coefficiente angolare delle rette che interpolano tali velocità. Ognuna delle misure di accelerazione così ottenute è affetta da un'incertezza fornitaci dal programma \emph{DataStudio\textsuperscript\textregistered}. Poiché queste incertezze sono disomogenee, per tenerne conto calcoliamo la media pesata dell'accelerazione per ogni raccolta. I dati sono riportati nella tabella~\ref{tab:accvsbulloni} con le rispettive incertezze, ottenute sommando in quadratura l'incertezza da associare alla media pesata (per definizione $1/\sqrt{\sum_{i}p_i}$, con $p_i = 1 / \sigma_{a_i}^2$) e la deviazione standard della media ($\sigma/\sqrt{10}$).
 Poiché l'inverso dell'accelerazione e il numero di bulloni inseriti sono legati da una relazione lineare è possibile ottenere una stima del momento d'inerzia del disco del volano, $I_0$, e del momento dell'attrito radente, $M_a$. Partendo dalle equazioni cardinali della dinamica otteniamo: 
 	
 	\begin{equation}\label{eq:equazioneretta}
@@ -168,13 +168,13 @@ M_a = mgr - \frac{2m_b R^2}{Br}
 I_0 = 2m_bR^2 \frac{A}{B} - mr^2
 \end{equation}
 
-Dove i parametri rappresentano rispettivamente:
+Dove si ha:
 \begin{itemize}
-	\item $m$: massa appesa al filo inestensibile del volano; 
-	\item $m_b$: media delle masse dei $16$ bulloni; 
-	\item $r$: raggio del dischetto attaccato al volano attorno al quale si avvolge il filo;
-	\item $R$: distanza tra l'asse di rotazione del volano e il centro di massa dei bulloni;
-	\item $g$: accelerazione di gravità, data, in questo caso, dal valore senza incertezza di \SI{9.803}{m/s^2}. 
+	\item $m$ = \SI{555.00 \pm 0.03 e-3}{kg}: massa appesa al filo inestensibile del volano; 
+	\item $m_b$ = \SI{53.6 \pm 0.2 e-3}{kg}: media delle masse dei $16$ bulloni; 
+	\item $r$ = \SI{1.068 \pm 0.009 e-2}{m}: raggio del dischetto attaccato al volano attorno al quale si avvolge il filo;
+	\item $R$ = \SI{0.1753 \pm 0.0003}{m}: distanza tra l'asse di rotazione del volano e il centro di massa dei bulloni;
+	\item $g$ = \SI{9.803}{m/s^2}: accelerazione di gravità, data, in questo caso, senza incertezza. 
 \end{itemize}
 
 
@@ -239,6 +239,58 @@ mentre la migliore stima di $I_0$ è:
 \subsection{Studio della perdita di energia potenziale gravitazionale a causa del momento di attrito}
 
 \subsection{Studio del moto del volano in presenza di attrito del mezzo}
+Si montano sul volano, avvitandole con due bulloni, le due palette, di massa \SI{74.30 \pm 0.03}{g} e \SI{74.00 \pm 0.03}{g}, in posizione simmetrica. Si acquisisce la velocità di caduta della zavorra per tre moti successivi; a titolo d'esempio la posizione della massa in funzione del tempo per uno di questi moti è rappresentata nel grafico di figura~\ref{fig:caduta_attrito_aria}, mentre la velocità in funzione del tempo nel grafico di figura~\ref{fig:vel_attrito_aria}. Si osserva dai grafici che la zavorra raggiunge la velocità limite dopo circa \SI{7}{s} dalla partenza, e inverte il moto al termine della caduta dopo circa \SI{23}{s} dalla partenza. Per calcolare la velocità limite $v_\text{lim}$ si calcola dunque la media delle velocità comprese negli intervalli di tempo in cui la zavorra scende a velocità costante per i $3$ set di dati relativi alla caduta, e ad essa si associa un'incertezza data dalla somma in quadratura della deviazione standard divisa per la radice del numero di dati utilizzati, nel nostro caso $2646$, e dell'incertezza strumentale del sensore di posizione, che assumiamo sia pari all'ultimo digit diviso $\sqrt{12}$. Si ottiene il valore
+\begin{equation}\label{eq:vlim}
+v_\text{lim} = \SI{0.0665 \pm 0.0004}{m/s}
+\end{equation}
+
+Il moto della zavorra e del volano in presenza di attrito del mezzo è descritto dall'equazione differenziale
+\[
+\frac{d v}{d t} = \frac{1}{\tau}(v_\text{lim} - v)
+\]
+ove con $\tau$ si indica il tempo caratteristico,
+\[
+\tau = \frac{mr^2 + I_0}{kr^2};
+\]
+la precedente equazione ha soluzione
+\[
+v = v_\text{lim}(1 - e^{-t / \tau}).
+\]
+Con $k$ si indica il coefficiente di attrito dell'aria, che è legato alla velocità per determinare il momento di attrito del mezzo dall'equazione di Stokes
+\[
+M_v = k v r,
+\]
+la velocità limite è invece espressa dall'equazione
+\[
+v_\text{lim} = \frac{mgr^2 - M_a r}{kr^2},
+\]
+da cui si ricava
+\[
+k = \frac{mgr^2 - M_a r}{v_\text{lim}r^2}.
+\]
+Si ottiene perciò per il coefficiente di attrito il valore
+\[
+\boxed{\bf{k = \SI{79.4 \pm 0.4}{kg / s}}},
+\]
+con incertezza propagata
+
+\begin{figure}
+\caption{Posizione della zavorra in funzione del tempo in presenza di attrito del mezzo}
+\label{fig:caduta_attrito_aria}
+\centering
+\includegraphics[scale=0.8]{caduta_attrito_aria.eps} 
+\end{figure}
+
+\begin{figure}
+\caption{Velocità della zavorra in funzione del tempo in presenza di attrito del mezzo}
+\label{fig:vel_attrito_aria}
+\centering
+\includegraphics[scale=0.8]{vel_attrito_aria.eps} 
+\end{figure}
+
+
+
+
 
 %========================= CONCLUSIONI =============
 \section{Considerazioni finali}
