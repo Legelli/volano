@@ -34,7 +34,7 @@
 keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},
 language=C, basicstyle=\small,
 numbers=left, numberstyle=\tiny,
-stepnumber=2, numbersep=5pt, frame=shadowbox, #1}}{}
+stepnumber=2, numbersep=5pt, frame=shadowbox,  showstringspaces=false, #1}}{}
 
 \setcounter{section}{-1}
 
@@ -382,5 +382,42 @@ compatibile entro $7$ \emph{sigma} con il valore ricavato precedentemente. Si so
 
 \section{Appendice: tabelle e grafici}
 
+\begin{codice_c}[caption={Programma per la ricerca di massimi e mini relativi e calcolo di $\Delta h/h$}, label={lst:ricerca_max_min}][H]
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+  FILE *pfr, *pfw;
+  int b=0, n=0;
+  double t, h=0, hTemp, hMinP=0, hMin, hMax;
+  if ((pfr = fopen("posizione.txt", "r")) == NULL) {
+    printf("C'e' stato un errore nel tentativo di aprire il file 'posizione.txt'.\n");
+    exit(1);
+  }
+  if ((pfw = fopen("risultati.txt", "w")) == NULL) {
+    printf("C'e' stato un errore nel tentativo di creare il file 'risultati.txt'.\n");
+    exit(1);
+  }
+  fscanf(pfr, "%lf", &t); //Legge il tempo per la prima volta
+  while (!feof(pfr)) { //Continua finche' il file non e' finito
+    hTemp = h;
+    fscanf(pfr, "%lf", &h); //Legge la posizione
+    if (b == 0 && h < hTemp) { //Caso di un massimo
+      hMax = h;
+      b = 1;
+    } else if (b == 1 && h > hTemp) { //Caso di un minimo
+      hMin = h;
+      printf("%2d: t = %3.2lf s -- dH/H = %5.6lf \n", 1+n++,t,(hMin-hMinP)/(hMax-hMinP));
+      fprintf(pfw, "%lf %lf \n", t, (hMin - hMinP) / (hMax - hMinP));
+      hMinP = hMin;
+      b=0;
+    }
+    fscanf(pfr, "%lf", &t); //Legge il tempo
+  }
+  fclose(pfr);
+  fclose(pfw);
+}
+
+\end{codice_c}
 
 \end{document}
