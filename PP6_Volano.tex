@@ -210,13 +210,13 @@ Dove le incertezze sono le stesse citate precedentemente, eccetto per $\sigma_A$
 
 
 I valori dei parametri $A$ e $B$ ottenuti con le equazioni~\ref{eq:coefficienteangolare} e \ref{eq:intercetta}, a partire dai dati riportati in tabella~\ref{accvsbulloni} sono: 
-
 \begin{equation}
 \boxed{\bf{A = \SI{19.71 \pm 0.09}{s^2 / m}}};
 \end{equation}
 \begin{equation}
 \boxed{\bf{B = \SI{5.52 \pm 0.03}{s^2 / m}}}.
 \end{equation}
+Calcolando il chi quadrato del fit otteniamo il valore di $\chi^2 = 4.5$, contro il valore atteso di $7.0 \pm 3.7$, dato dal numero di gradi di libertà (numero di dati utilizzati, nel nostro caso $9$, meno $2$). La probabilità del chi quadrato associata al valore da noi calcolato è del $72.1\%$, indice che i dati sperimentali si adattano bene alla retta di regressione lineare.
 
 In figura~\ref{fig:n_vs_inva} è riportato il grafico di $1 / a$ in funzione del numero $n$ di coppie di bulloni avvitate sul volano.
 %I valori di intercetta e coeficiente angolare della retta forniti dal softwer di analisi dati \emph{R} sono: 
@@ -382,7 +382,7 @@ compatibile entro $7$ \emph{sigma} con il valore ricavato precedentemente. Si so
 
 \section{Appendice: tabelle e grafici}
 
-\begin{codice_c}[caption={Programma per la ricerca di massimi e mini relativi e calcolo di $\Delta h/h$}, label={lst:ricerca_max_min}][H]
+\begin{codice_c}[caption={Programma per la ricerca di massimi e minimi relativi e calcolo di $\Delta h/h$}, label={lst:ricerca_max_min}][H]
 #include <stdio.h>
 #include <stdlib.h>
 
