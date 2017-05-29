@@ -321,16 +321,18 @@ Si ottiene perciò per il coefficiente di attrito il valore
 \boxed{\bf{k = \SI{79.4 \pm 0.4}{kg / s}}},
 \]
 con incertezza calcolata propagando sull'equazione~\ref{eq:k_aria}, ottenendo
+\small
 \begin{align*}
 \sigma_k^2 &= \left( \frac{\partial k}{\partial m} \right)^2 \sigma_m^2 + \left( \frac{\partial k}{\partial r} \right)^2 \sigma_r^2 + \left( \frac{\partial k}{\partial M_a} \right)^2 \sigma_{M_a}^2 + \left( \frac{\partial k}{\partial v_\text{lim}} \right)^2 \sigma_{v_\text{lim}}^2 \\
 	& = \left( \frac{g}{v_\text{lim}} \right)^2 \sigma_m^2 + \left( \frac{(2mgr-M_a)(r^2v_\text{lim})-(mgr^2-M_a)\cdot 2 v_\text{lim}}{(v_\text{lim}r^2)^2} \right)^2 \sigma_r^2 + \left( \frac{1}{v_\text{lim}r} \right)^2 \sigma_{M_a}^2 + \left( \frac{M_ar-mgr^2}{r^2v_\text{lim}^2} \right)^2 \sigma_{v_\text{lim}}^2.
 \end{align*}
+\normalsize
 
 Riteniamo che eventuali discrepanze della nostra stima dal \emph{valore vero}\footnote{È qui doveroso enfatizzare questo termine in quanto l'attrito con l'aria, essendo dovuto al moto casuale delle particelle che compongono il mezzo, non può essere esplicitato con una rigorosa trattazione meccanica, pertanto il coefficiente ha solo valore indicativo della influenza sul moto del corpo.} siano dovute alla eventuale non dipendenza lineare del momento d'attrito con l'aria dalla velocità. L'incertezza, dell'ordine dello $0.5\%$ è dovuta alle misure del raggio del dischetto attorno a cui si avvolge il filo e alla precedente stima del momento d'attrito frenante, oltre all'errore statistico sulla media della velocità limite poiché, come si nota dal grafico~\ref{fig:vel_attrito_aria}, la velocità oscilla in modo consistente attorno a $v_\text{lim}$.
 
-Nel grafico di figura~\ref{fig:v_vlim} si riporta il logaritmo naturale della differenza tra il valore della velocità limite e quello della velocità fratto la velocità limite in funzione del tempo.
+Nel grafico di figura~\ref{fig:v_vlim} si riporta il logaritmo naturale della differenza tra il valore della velocità limite e quello della velocità fratto la velocità limite in funzione del tempo\footnote{È necessario dividere il valore della differenza tra velocità limite e velocità per il valore della velocità limite in quanto il logaritmo può avere come argomento solamente numeri adimensionali.}; sono stati scelti soltanto $27$ valori rispetto agli originali $2206$ (i dati sono riportati in tabella~\ref{tab:velocita_attrito_aria}) in quanto prima si sono esclusi i valori della velocità da cui si è ricavata la velocità limite, poiché in questo caso si è interessati a studiare l'andamento della velocità prima di raggiungere il moto uniforme, quindi si è tenuto un dato ogni $5$ poiché la frequenza di acquisizione del sensore di posizione non permetteva di apprezzare differenze nell'andamento della grandezza studiata. Le incertezze attribuite alla velocità sono le stesse già trattate precedentemente, ossia ultimo digit diviso $\sqrt{12}$, e l'incertezza sull'ordinata è stata propagata derivando parzialmente sulla funzione logaritmo; queste sono rappresentate per mezzo delle barre di errore di colore nero.
 
-Calcoliamo inoltre il tempo caratteristico $\tau$ con l'equazione~\ref{eq:tau}, ossia il tempo al quale la velocità è pari al $63.2\%$ della velocità limite ($v = \left(1 - \frac{1}{2}\right)v_\text{lim}$):
+Calcoliamo inoltre il tempo caratteristico $\tau$ con l'equazione~\ref{eq:tau}, ossia il tempo al quale la velocità è pari al $63.2\%$ della velocità limite \big($v = \left(1 - 1/e \right)v_\text{lim}$\big):
 \[
 \boxed{\bf{\tau = \SI{1.30 \pm 0.03}{s}}};
 \]
@@ -340,35 +342,16 @@ come termine di confronto possiamo realizzare un fit dei punti sperimentali ripo
 \]
 dunque il coefficiente angolare rappresenta una stima dell'inverso del reciproco del tempo caratteristico. Utilizzando l'equazione~\ref{eq:coefficienteangolare} si ottiene la stima, accompagnata dall'incertezza calcolata con la radice del risultato dell'equazione~\ref{eq:varianzacoeff},
 \[
--\frac{1}{\tau} = \SI{-0.559 \pm 0.018}{s^{-1}};
+-\frac{1}{\tau} = \SI{-0.523 \pm 0.003}{s^{-1}};
 \]
 da questa si ottiene la misura del tempo caratteristico
 \[
-\tau = \SI{1.79 \pm 0.06}{s^{-1}},
+\tau = \SI{1.91 \pm 0.01}{s^{-1}},
 \]
-compatibile entro $7$ \emph{sigma} con il valore ricavato precedentemente. Si sottolinea che l'incertezza sui valori dell'ordinata, ossia del logaritmo del rapporto tra differenza di velocità limite e velocità e velocità limite, è stata assunta uguale per tutti i $14$ punti sperimentali, selezionati dai $1168$ a disposizione in quanto la frequenza di campionamento del sensore non permetteva di apprezzare le differenze di velocità nel corso del tempo.
+che non è tuttavia compatibile con il valore trovato precedentemente in quanto si trova ad oltre $20$ \emph{sigma} da esso. Riteniamo che questo sia dovuto alla presenza del momento di attrito frenante che, dipendendo in misura minore dalla velocità, influisce sulla bontà della regressione lineare dei dati; il tempo caratteristico calcolato precedentemente, infatti, proviene da una relazione indipendente dalla velocità, ricavata direttamente a partire dal modello teorico. Tornando alla trattazione delle incertezze, si nota che i punti sperimentali distano di diverse sigma dalla retta di fit; calcolando il chi quadrato questo è dell'ordine di $3\times10^{2}$, ben oltre il valore atteso di $25\pm7$ dato dai gradi di libertà. Si procede pertanto alla stima dell'incertezza a partire dai residui, che porta il valore di $\chi^2$ al più coerente $12.5$. Le barre di errore, in questo secondo caso, sono rappresentate in rosso.
 
 
-\begin{figure}
-\caption{Posizione della zavorra in funzione del tempo in presenza di attrito del mezzo}
-\label{fig:caduta_attrito_aria}
-\centering
-\includegraphics[scale=0.8]{caduta_attrito_aria.eps} 
-\end{figure}
 
-\begin{figure}
-\caption{Velocità della zavorra in funzione del tempo in presenza di attrito del mezzo}
-\label{fig:vel_attrito_aria}
-\centering
-\includegraphics[scale=0.8]{vel_attrito_aria.eps} 
-\end{figure}
-
-\begin{figure}
-\caption{Logaritmo del rapporto tra la differenza di $v_\text{lim}$ e $v$ e la velocità limite in funzione del tempo}
-\label{fig:v_vlim}
-\centering
-\includegraphics[scale=0.8]{logvst.eps} 
-\end{figure}
 
 
 
@@ -419,5 +402,71 @@ int main() {
 }
 
 \end{codice_c}
+
+
+
+
+
+
+
+\begin{figure}
+\caption{Posizione della zavorra in funzione del tempo in presenza di attrito del mezzo}
+\label{fig:caduta_attrito_aria}
+\centering
+\includegraphics[scale=0.8]{caduta_attrito_aria.eps} 
+\end{figure}
+
+\begin{figure}
+\caption{Velocità della zavorra in funzione del tempo in presenza di attrito del mezzo}
+\label{fig:vel_attrito_aria}
+\centering
+\includegraphics[scale=0.8]{vel_attrito_aria.eps} 
+\end{figure}
+
+\begin{table}[ht]
+\caption{Dati scelti della velocità di caduta in presenza di attrito dell'aria in funzione del tempo}
+\label{tab:velocita_attrito_aria}
+\centering
+\begin{tabular}{rrr}
+  \hline
+ & t [\SI{}{s}]& [\SI{}{m/s^2}] \\ 
+  \hline
+ & 0.090 & 0.007 \\ 
+   & 0.190 & 0.008 \\ 
+   & 0.290 & 0.009 \\ 
+   & 0.390 & 0.011 \\ 
+  5 & 0.490 & 0.013 \\ 
+   & 0.590 & 0.015 \\ 
+   & 0.690 & 0.015 \\ 
+   & 0.790 & 0.019 \\ 
+   & 0.890 & 0.023 \\ 
+  10 & 0.990 & 0.026 \\ 
+   & 1.090 & 0.028 \\ 
+   & 1.190 & 0.030 \\ 
+   & 1.290 & 0.032 \\ 
+   & 1.390 & 0.037 \\ 
+  15 & 1.490 & 0.037 \\ 
+   & 1.590 & 0.037 \\ 
+   & 1.690 & 0.039 \\ 
+   & 1.790 & 0.041 \\ 
+   & 1.890 & 0.039 \\ 
+  20 & 1.990 & 0.041 \\ 
+   & 2.090 & 0.043 \\ 
+   & 2.190 & 0.045 \\ 
+   & 2.290 & 0.049 \\ 
+   & 2.390 & 0.049 \\ 
+  25 & 2.490 & 0.051 \\ 
+   & 2.590 & 0.051 \\ 
+   & 2.690 & 0.052 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\begin{figure}
+\caption{Logaritmo del rapporto tra la differenza di $v_\text{lim}$ e $v$ e la velocità limite in funzione del tempo}
+\label{fig:v_vlim}
+\centering
+\includegraphics[scale=0.8]{logvst.eps} 
+\end{figure}
 
 \end{document}
