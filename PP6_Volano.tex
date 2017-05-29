@@ -304,7 +304,7 @@ Il moto della zavorra e del volano in presenza di attrito del mezzo è descritto 
 \]
 ove con $\tau$ si indica il tempo caratteristico,
 \begin{equation}\label{eq:tau}
-\tau = \frac{mr^2 + I_0}{kr^2};
+\tau = \frac{mr^2 + I_0}{krR};
 \end{equation}
 la precedente equazione ha soluzione
 \begin{equation}\label{eq:v_vlim}
@@ -312,27 +312,27 @@ v = v_\text{lim}(1 - e^{-t / \tau}).
 \end{equation}
 Con $k$ si indica il coefficiente di attrito dell'aria, che è legato alla velocità per determinare il momento di attrito del mezzo dall'equazione di Stokes
 \[
-M_v = k v r,
+M_v = k v R,
 \]
-dove $r$ è la distanza del centro di massa del sistema $bullone-aletta$ dall'asse di rotazione: in questo caso, considerando che bulloni e palette hanno una massa simile, stimiamo la posizione del centro di massa del sistema $bullone-aletta$ a circa $1/4$ dell'altezza complessiva, circa sulla circonferenza del volano, per cui la distanza $r$ è approssimabile, per la geometria del sistema, al raggio del volano stesso. 
+dove $R = \SI{0.1953 \pm 0.0003}{m}$ è la distanza del centro di massa del sistema $bullone-aletta$ dall'asse di rotazione: in questo caso, considerando che bulloni e palette hanno una massa simile, stimiamo la posizione del centro di massa del sistema $bullone-aletta$ a circa $1/4$ dell'altezza complessiva, circa sulla circonferenza del volano, per cui la distanza $R$ è approssimabile, per la geometria del sistema, al raggio del volano stesso. 
 
 La velocità limite è invece espressa dall'equazione
 \[
-v_\text{lim} = \frac{mgr^2 - M_a r}{kr^2},
+v_\text{lim} = \frac{mgr^2 - M_a r}{krR},
 \]
 da cui si ricava
 \begin{equation}\label{eq:k_aria}
-k = \frac{mgr^2 - M_a r}{v_\text{lim}r^2}.
+k = \frac{mgr^2 - M_a r}{v_\text{lim}rR}.
 \end{equation}
 Si ottiene perciò per il coefficiente di attrito il valore
 \[
-\boxed{\bf{k = \SI{81.7 \pm 0.4}{kg / s}}},
+\boxed{\bf{k = \SI{4.34 \pm 0.04}{kg / s}}},
 \]
 con incertezza calcolata propagando sull'equazione~\ref{eq:k_aria}, ottenendo
 \small
 \begin{align*}
-\sigma_k^2 &= \left( \frac{\partial k}{\partial m} \right)^2 \sigma_m^2 + \left( \frac{\partial k}{\partial r} \right)^2 \sigma_r^2 + \left( \frac{\partial k}{\partial M_a} \right)^2 \sigma_{M_a}^2 + \left( \frac{\partial k}{\partial v_\text{lim}} \right)^2 \sigma_{v_\text{lim}}^2 \\
-	& = \left( \frac{g}{v_\text{lim}} \right)^2 \sigma_m^2 + \left( \frac{(2mgr-M_a)(r^2v_\text{lim})-(mgr^2-M_a)\cdot 2 v_\text{lim}}{(v_\text{lim}r^2)^2} \right)^2 \sigma_r^2 + \left( \frac{1}{v_\text{lim}r} \right)^2 \sigma_{M_a}^2 + \left( \frac{M_ar-mgr^2}{r^2v_\text{lim}^2} \right)^2 \sigma_{v_\text{lim}}^2.
+\sigma_k^2 &= \left( \frac{\partial k}{\partial m} \right)^2 \sigma_m^2 + \left( \frac{\partial k}{\partial r} \right)^2 \sigma_r^2 + \left( \frac{\partial k}{\partial M_a} \right)^2 \sigma_{M_a}^2 + \left( \frac{\partial k}{\partial v_\text{lim}} \right)^2 \sigma_{v_\text{lim}}^2 + \left( \frac{\partial k}{\partial R} \right)^2 \sigma_{R}^2\\
+	& = \left( \frac{gr}{Rv_\text{lim}} \right)^2 \sigma_m^2 + \left( \frac{mg}{Rv_\text{lim}} \right)^2 \sigma_r^2 + \left(- \frac{1}{v_\text{lim}R} \right)^2 \sigma_{M_a}^2 + \left( \frac{M_ar-mgr^2}{rRv_\text{lim}^2} \right)^2 \sigma_{v_\text{lim}}^2 + \left( \frac{M_ar-mgr^2}{rR^2v_\text{lim}} \right)^2 \sigma_R^2.
 \end{align*}
 \normalsize
 
@@ -342,9 +342,17 @@ Nel grafico di figura~\ref{fig:v_vlim} si riporta il logaritmo naturale della di
 
 Calcoliamo inoltre il tempo caratteristico $\tau$ con l'equazione~\ref{eq:tau}, ossia il tempo al quale la velocità è pari al $63.2\%$ della velocità limite \big($v = \left(1 - 1/e \right)v_\text{lim}$\big):
 \[
-\boxed{\bf{\tau = \SI{1.30 \pm 0.03}{s}}};
+\boxed{\bf{\tau = \SI{1.30 \pm 0.02}{s}}};
 \]
-come termine di confronto possiamo realizzare un fit dei punti sperimentali riportati nel già citato grafico di figura~\ref{fig:v_vlim}. Dall'equazione~\ref{eq:v_vlim} si ha che le grandezze rappresentate sono legate dalla relazione
+con incertezza calcolata mediante l'equazione
+\small
+\begin{align*}
+\sigma_\tau^2 &= \left( \frac{\partial \tau}{\partial m} \right)^2 \sigma_m^2 + \left( \frac{\partial \tau}{\partial r} \right)^2 \sigma_r^2 + \left( \frac{\partial \tau}{\partial I_0} \right)^2 \sigma_{I_0}^2 + \left( \frac{\partial \tau}{\partial k} \right)^2 \sigma_k^2 + \left( \frac{\partial \tau}{\partial R} \right)^2 \sigma_R^2 \\
+	&= \left( \frac{r}{kR} \right)^2 \sigma_m^2 + \left( \frac{m}{kR} - \frac{I_0}{kRr^2} \right)^2 \sigma_r^2 + \left( \frac{1}{krR} \right)^2 \sigma_{I_0}^2 + \left(- \frac{mr^2 + I_0}{k^2rR} \right)^2 \sigma_k^2 + \left( \frac{I_0 - mr^2}{krR^2} \right)^2 \sigma_R^2.
+\end{align*}
+\normalsize
+
+Come termine di confronto possiamo realizzare un fit dei punti sperimentali riportati nel già citato grafico di figura~\ref{fig:v_vlim}. Dall'equazione~\ref{eq:v_vlim} si ha che le grandezze rappresentate sono legate dalla relazione
 \[
 \log\left(\frac{v_\text{lim} - v}{v_\text{lim}}\right) = -\frac{1}{\tau}t,
 \]
