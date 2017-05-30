@@ -236,7 +236,7 @@ mentre la migliore stima di $I_0$ è:
 
 
 
-\subsection{Studio della perdita di energia potenziale gravitazionale a causa del momento di attrito}
+\subsection{Studio della perdita di energia potenziale gravitazionale a causa del momento di attrito}\label{subsec:seconda}
 L'apparato strumentale non è esente da attriti interni (come può essere l'allineamento non perfetto tra asse di rotazione e momento angolare del volano) ed esterni (l'aria): complessivamente si genera un momento d'attrito di verso opposto a quello generato dalla rotazione del volano che dissipa energia, causando gradualmente un abbassamento della quota massima raggiunta dalla massa appesa fino all'arresto del sistema. Nel grafico \ref{fig:dVSt} si riporta la distanza della massa dal sensore in funzione del tempo: la minima quota raggiunta (che corrisponde alla massima distanza dal sensore) si mantiene circa costante nel tempo\footnote{Le visibili variazioni iniziali sono dovute all'estensibilità del filo che sottoposto a tensione si allunga; poiché la tensione è direttamente proporzionale all'altezza da cui la massa parte si riscontra un allungamento maggiore nella fase iniziale.}, ed è pari alla lunghezza complessiva del filo che collega la massa al volano meno la distanza tra il centro del volano e il sensore; l'energia dissipata dall'attrito causa un abbassamento della quota massima, alla quale la massa riesce a risalire, trasformando la differenza di energia potenziale gravitazionale $U = mg\Delta h$ in calore: se il modulo del momento di attrito rimane costante nel tempo, il rapporto $\Delta h / h$ rimarrà costante a sua volta; nel grafico \ref{fig:dVSt} si riportano in rosso le quote massime $h$ e in blu le differenze di quota $\Delta h$ a titolo esemplificativo per i primi cinque eventi.
 
 \begin{figure}
@@ -253,7 +253,13 @@ L'apparato strumentale non è esente da attriti interni (come può essere l'alline
 \[
 	m = \SI{-0.00020 \pm 0.00002}{t^{-1}};
 \]
-analizzando il grafico si evidenzia un'importante tendenza a decrescere con l'aumentare del tempo, inoltre il risultato ottenuto è incompatibile con 0 il quale è a più di 13 \emph{sigma} di distanza dalla media, il che ci porta a concludere che il nostro modello che prevede una costanza nel tempo del modulo del momento d'attrito sia eccessivamente approssimato: riteniamo più concreto un modello che prevede una diretta proporzionalità tra momento d'attrito e velocità. Si riportano in tabella \ref{tab:dh_t} i valori del rapporto $\Delta h / h$ e del tempo dopo il quale è stata raggiunta la rispettiva quota massima.
+analizzando il grafico si evidenzia un'importante tendenza a decrescere con l'aumentare del tempo, inoltre il risultato ottenuto è incompatibile con 0 il quale è a più di 13 \emph{sigma} di distanza dalla media, il che ci porta a concludere che il nostro modello che prevede una costanza nel tempo del modulo del momento d'attrito sia eccessivamente approssimato: riteniamo più concreto un modello che prevede una diretta proporzionalità tra momento d'attrito e velocità. Si riportano in tabella \ref{tab:dh_t} i valori del rapporto $\Delta h / h$ e del tempo dopo il quale è stata raggiunta la rispettiva quota massima, le incertezze riportate sono per il tempo $\sigma_t = 0.01 / \sqrt{12} = \SI{0.003}{s}$, mentre per il rapporto si propaga l'incertezza strumentale data da $u_B = 0.001 / \sqrt{12} = \SI{0.0003}{m}$, infatti
+\[
+	\left(\frac{\Delta h}{h}\right)_i = \frac{h_{\mathrm{min}(i)} - h_{\mathrm{min}(i-1)}}{h_{\mathrm{max}(i)} - h_{\mathrm{min}(i-1)}}
+\] da cui
+\begin{equation}\label{eq:sigma_rapporto}
+	\sigma_{(\Delta h / h)_i} = u_b\left(\frac{\Delta h}{h}\right)_i \sqrt{\frac{2}{\Delta h_i^2} + \frac{2}{h_i^2}}
+\end{equation} che mette in evidenza come l'incertezza cambi in funzione dei valori, per questo motivo l'incertezza per il rapporto è riportata rispetto ad ogni valore.
 
 \begin{figure}
 \caption{Coefficiente $\Delta h / h$ in funzione del tempo}
@@ -271,7 +277,7 @@ analizzando il grafico si evidenzia un'importante tendenza a decrescere con l'au
 \includegraphics[scale=0.8]{istogramma_dh.eps} 
 \end{figure}
 
-Con l'approssimazione $\Delta h / h = \SI{0.059 \pm 0.003}{}$, dove l'incertezza è la deviazione standard della media, vale la relazione	
+Con l'approssimazione $\Delta h / h = \SI{0.059 \pm 0.003}{}$\footnote{La media è stata inferita dall'istogramma.}, dove l'incertezza è la deviazione standard della media, vale la relazione	
 \begin{equation}
 	M_a = \frac{m g r \frac{\Delta h}{h}}{2- \frac{\Delta h}{h}}
 \end{equation}
@@ -298,7 +304,7 @@ Il moto della zavorra e del volano in presenza di attrito del mezzo è descritto 
 \]
 ove con $\tau$ si indica il tempo caratteristico,
 \begin{equation}\label{eq:tau}
-\tau = \frac{mr^2 + I_0}{kr^2};
+\tau = \frac{mr^2 + I_0}{krR};
 \end{equation}
 la precedente equazione ha soluzione
 \begin{equation}\label{eq:v_vlim}
@@ -306,25 +312,27 @@ v = v_\text{lim}(1 - e^{-t / \tau}).
 \end{equation}
 Con $k$ si indica il coefficiente di attrito dell'aria, che è legato alla velocità per determinare il momento di attrito del mezzo dall'equazione di Stokes
 \[
-M_v = k v r,
+M_v = k v R,
 \]
-la velocità limite è invece espressa dall'equazione
+dove $R = \SI{0.1953 \pm 0.0003}{m}$ è la distanza del centro di massa del sistema $bullone-aletta$ dall'asse di rotazione: in questo caso, considerando che bulloni e palette hanno una massa simile, stimiamo la posizione del centro di massa del sistema $bullone-aletta$ a circa $1/4$ dell'altezza complessiva, circa sulla circonferenza del volano, per cui la distanza $R$ è approssimabile, per la geometria del sistema, al raggio del volano stesso. 
+
+La velocità limite è invece espressa dall'equazione
 \[
-v_\text{lim} = \frac{mgr^2 - M_a r}{kr^2},
+v_\text{lim} = \frac{mgr^2 - M_a r}{krR},
 \]
 da cui si ricava
 \begin{equation}\label{eq:k_aria}
-k = \frac{mgr^2 - M_a r}{v_\text{lim}r^2}.
+k = \frac{mgr^2 - M_a r}{v_\text{lim}rR}.
 \end{equation}
 Si ottiene perciò per il coefficiente di attrito il valore
 \[
-\boxed{\bf{k = \SI{79.4 \pm 0.4}{kg / s}}},
+\boxed{\bf{k = \SI{4.34 \pm 0.04}{kg / s}}},
 \]
 con incertezza calcolata propagando sull'equazione~\ref{eq:k_aria}, ottenendo
 \small
 \begin{align*}
-\sigma_k^2 &= \left( \frac{\partial k}{\partial m} \right)^2 \sigma_m^2 + \left( \frac{\partial k}{\partial r} \right)^2 \sigma_r^2 + \left( \frac{\partial k}{\partial M_a} \right)^2 \sigma_{M_a}^2 + \left( \frac{\partial k}{\partial v_\text{lim}} \right)^2 \sigma_{v_\text{lim}}^2 \\
-	& = \left( \frac{g}{v_\text{lim}} \right)^2 \sigma_m^2 + \left( \frac{(2mgr-M_a)(r^2v_\text{lim})-(mgr^2-M_a)\cdot 2 v_\text{lim}}{(v_\text{lim}r^2)^2} \right)^2 \sigma_r^2 + \left( \frac{1}{v_\text{lim}r} \right)^2 \sigma_{M_a}^2 + \left( \frac{M_ar-mgr^2}{r^2v_\text{lim}^2} \right)^2 \sigma_{v_\text{lim}}^2.
+\sigma_k^2 &= \left( \frac{\partial k}{\partial m} \right)^2 \sigma_m^2 + \left( \frac{\partial k}{\partial r} \right)^2 \sigma_r^2 + \left( \frac{\partial k}{\partial M_a} \right)^2 \sigma_{M_a}^2 + \left( \frac{\partial k}{\partial v_\text{lim}} \right)^2 \sigma_{v_\text{lim}}^2 + \left( \frac{\partial k}{\partial R} \right)^2 \sigma_{R}^2\\
+	& = \left( \frac{gr}{Rv_\text{lim}} \right)^2 \sigma_m^2 + \left( \frac{mg}{Rv_\text{lim}} \right)^2 \sigma_r^2 + \left(- \frac{1}{v_\text{lim}R} \right)^2 \sigma_{M_a}^2 + \left( \frac{M_ar-mgr^2}{rRv_\text{lim}^2} \right)^2 \sigma_{v_\text{lim}}^2 + \left( \frac{M_ar-mgr^2}{rR^2v_\text{lim}} \right)^2 \sigma_R^2.
 \end{align*}
 \normalsize
 
@@ -334,9 +342,17 @@ Nel grafico di figura~\ref{fig:v_vlim} si riporta il logaritmo naturale della di
 
 Calcoliamo inoltre il tempo caratteristico $\tau$ con l'equazione~\ref{eq:tau}, ossia il tempo al quale la velocità è pari al $63.2\%$ della velocità limite \big($v = \left(1 - 1/e \right)v_\text{lim}$\big):
 \[
-\boxed{\bf{\tau = \SI{1.30 \pm 0.03}{s}}};
+\boxed{\bf{\tau = \SI{1.30 \pm 0.02}{s}}};
 \]
-come termine di confronto possiamo realizzare un fit dei punti sperimentali riportati nel già citato grafico di figura~\ref{fig:v_vlim}. Dall'equazione~\ref{eq:v_vlim} si ha che le grandezze rappresentate sono legate dalla relazione
+con incertezza calcolata mediante l'equazione
+\small
+\begin{align*}
+\sigma_\tau^2 &= \left( \frac{\partial \tau}{\partial m} \right)^2 \sigma_m^2 + \left( \frac{\partial \tau}{\partial r} \right)^2 \sigma_r^2 + \left( \frac{\partial \tau}{\partial I_0} \right)^2 \sigma_{I_0}^2 + \left( \frac{\partial \tau}{\partial k} \right)^2 \sigma_k^2 + \left( \frac{\partial \tau}{\partial R} \right)^2 \sigma_R^2 \\
+	&= \left( \frac{r}{kR} \right)^2 \sigma_m^2 + \left( \frac{m}{kR} - \frac{I_0}{kRr^2} \right)^2 \sigma_r^2 + \left( \frac{1}{krR} \right)^2 \sigma_{I_0}^2 + \left(- \frac{mr^2 + I_0}{k^2rR} \right)^2 \sigma_k^2 + \left( \frac{I_0 - mr^2}{krR^2} \right)^2 \sigma_R^2.
+\end{align*}
+\normalsize
+
+Come termine di confronto possiamo realizzare un fit dei punti sperimentali riportati nel già citato grafico di figura~\ref{fig:v_vlim}. Dall'equazione~\ref{eq:v_vlim} si ha che le grandezze rappresentate sono legate dalla relazione
 \[
 \log\left(\frac{v_\text{lim} - v}{v_\text{lim}}\right) = -\frac{1}{\tau}t,
 \]
@@ -358,50 +374,123 @@ che non è tuttavia compatibile con il valore trovato precedentemente in quanto s
 
 
 %========================= CONCLUSIONI =============
-\section{Considerazioni finali}
+\section{Approfondimenti e considerazioni finali}
+\paragraph{Massa del volano} A partire dai risultati sul momento d'inerzia del disco ottenuti nella sezione \ref{subsec:prima}, possiamo tentare di stimare la massa del volano: supponendo il disco omogeneo e il suo spessore trascurabile rispetto al raggio $R$, esso avrebbe un momento d'inerzia pari a 
+\[
+	I = \frac{1}{2} M R^2
+\] che, in termini di densità superficiale $\rho$ si esprime come
+\[
+	I = \frac{1}{2} \rho \pi R^4.
+\] Sul disco sono presenti 16 fori ad una distanza $r = \SI{0.1753 \pm 0.0003}{m}$ dall'asse di rotazione (la distanza è presa fino al centro dei fori), ed ogni foro ha un diametro pari a $d = \SI{0.0100 \pm 0.0003}{m}$, per cui, considerando anche la presenza di questi ultimi, il momento d'inerzia reale del disco è dato da
+\[
+	I = \frac{1}{2} \rho \pi R^4 - 8 \rho \pi \frac{d^2}{4}r^2
+\] da cui la densità
+\[
+	\rho = \frac{ I }{\frac{1}{2}\pi R^4 - 8 \pi \frac{d^2}{4} r^2}.
+\] Propagando l'incertezza su quest'ultima equazione, si ottiene
+\[
+	\sigma = \rho \sqrt{ \left( \frac{\sigma_I}{I} \right)^2 + \left(\frac{\sigma_{1/2 \pi R^4 - 8 \pi d^2/4 r^2}}{\frac{1}{2} \pi R^4 - 8 \pi \frac{d^2}{4} r^2}\right)^2}
+\] dove la seconda incertezza si calcola propagando con i differenziali sul denominatore. Svolgendo i calcoli si ottiene
+\[
+	\rho = \SI{4.64 \pm 0.05}{Kg/m^2}
+\] da cui risaliamo alla massa:
+\begin{equation}\label{eq:massa}
+	M = \pi \rho \left(R^2 - 16 \frac{d^2}{4}\right).
+\end{equation}
+Dall'equazione (\ref{eq:massa}) possiamo infine ricavare la miglior stima di $M$:
+\[
+\boxed{\bf{M = \SI{0.548 \pm 0.006}{Kg}}},
+\] dove l'incertezza è stata ottenuta propagando sull'equazione (\ref{eq:massa}).
+
+\paragraph{Conclusioni} Confrontando i due risultati ottenuti per il momento d'attrito sistematico $M_a$, risultati che si è già detto essere compatibili, risulta ben più accurato quello ottenuto nella sezione \ref{subsec:seconda}: il risultato potrebbe lasciar fraintendere, dal momento che nel calcolare le incertezze sul secondo metodo (in cui si è calcolato il momento d'attrito a partire dalla perdita di energia) non si è tenuto conto dell'approssimazione di tale rapporto a costante nel tempo, a tal proposito è bene ribadire che un modello di attrito dipendente dalla velocità (e quindi dalla quota iniziale) è più adatto a descrivere tali fenomeni, in particolare è opinione generale che l'attrito (principalmente l'attrito del mezzo) sia una quantità dipendente dalla velocità, come la \emph{Legge di Stokes} permette di interpretare. Eppure non sarebbe stato possibile, in queste condizioni, effettuare misure in cui la variazione del rapporto $\Delta h/h$ fosse meno evidente: per farlo si sarebbe dovuto lasciar cadere la massa da una quota iniziale inferiore, in modo da ridurre le velocità e quindi rendere più costante il momento d'attrito, ma ciò sarebbe stato controproducente in quanto le incertezze relative a quel rapporto aumentano considerevolmente al diminuire delle differenze di quota (si confronti l'equazione (\ref{eq:sigma_rapporto}) e il grafico \ref{fig:dhVSt}). Per migliorare l'inferenza si sarebbe dovuto cambiare il modello, e considerare l'attrito come effettivamente dipendente dalla velocità (e quindi, di nuovo, dalla quota): ciò avrebbe complicato inutilmente i conti, in quanto si sarebbe dovuto risolvere equazioni differenziali del secondo ordine, in conclusione ci sentiamo di dire che il metodo adottato è senza dubbio il più pratico, anche se non il più accurato.
 
 \pagebreak
 %=================APPENDICE==================================
 
 \section{Appendice: tabelle e grafici}
+\begin{center}
+\begin{longtable}{cc|cc}
+\label{tab:dh_t}\\
+\caption{Rapporti $\Delta h / h$ e tempo al quale la zavorra ha raggiunto la nuova quota massima}\\
+\hline
+ $\,\,\,$ & Tempo [\SI{}{s}] &  $\Delta h/h$  & $\sigma_{\Delta h/h}$ \\
+& $\pm$ 0.003 s & & \\[0.1cm]
+\hline
+\endfirsthead
+\multicolumn{4}{r}%
+{\tablename\ \thetable\ -- \textit{Continua dalla pagina precedente}} \\[0.3cm]
+\hline
+\endhead
+\hline \multicolumn{4}{r}{\textit{Continua alla pagina successiva}} \\
+\endfoot
+\hline
+\endlastfoot
+1 & 147.600 &0.1272 & 0.0003 \\ 
+   & 284.000& 0.1171 & 0.0003 \\ 
+   & 411.600& 0.1113 & 0.0004 \\ 
+   & 531.600& 0.1066 & 0.0004 \\ 
+   & 645.800& 0.1006 & 0.0005 \\ 
+   & 754.000& 0.0994 & 0.0005 \\ 
+   & 856.000& 0.0880 & 0.0006 \\ 
+   & 955.800& 0.0904 & 0.0007 \\ 
+   & 104.940&  0.0825 & 0.0007 \\ 
+  10 & 113.940 &  0.079190 & 0.000784 \\ 
+   & 122.380 &  0.076000 & 0.000851 \\ 
+   & 130.880 &  0.075594 & 0.000919 \\ 
+   & 138.880 &  0.072430 & 0.000994 \\ 
+   & 146.580 &  0.068182 & 0.001074 \\ 
+   & 153.940 &  0.064865 & 0.001149 \\ 
+   & 161.200 &  0.066474 & 0.001229 \\ 
+   & 168.320 &  0.062112 & 0.001320 \\ 
+   & 175.140 &  0.062914 & 0.001408 \\ 
+   & 181.740 &  0.063830 & 0.001508 \\ 
+  20 & 187.920 &  0.056604 & 0.001604 \\ 
+   & 194.240 &  0.056225 & 0.001707 \\ 
+   & 200.220 &  0.055319 & 0.001808 \\ 
+   & 206.140 &  0.058296 & 0.001906 \\ 
+   & 211.840 &  0.052381 & 0.002023 \\ 
+   & 217.500 &  0.055276 & 0.002135 \\ 
+   & 222.880 &  0.059140 & 0.002285 \\ 
+   & 228.000 &  0.045455 & 0.002413 \\ 
+   & 233.300 &  0.059524 & 0.002530 \\ 
+   & 238.160 &  0.050633 & 0.002689 \\ 
+  30 & 243.080 &  0.046667 & 0.002832 \\ 
+   & 247.880 &  0.055944 & 0.002972 \\ 
+   & 252.600 &  0.051852 & 0.003147 \\ 
+   & 257.080 &  0.046875 & 0.003318 \\ 
+   & 261.520 &  0.057377 & 0.003483 \\ 
+   & 265.860 &  0.043478 & 0.003693 \\ 
+   & 270.020 &  0.054545 & 0.003863 \\ 
+   & 274.120 &  0.038462 & 0.004082 \\ 
+   & 278.100 &  0.050000 & 0.004248 \\ 
+   & 282.140 &  0.052632 & 0.004472 \\ 
+  40 & 285.980 &  0.044444 & 0.004719 \\ 
+   & 289.680 &  0.046512 & 0.004939 \\ 
+   & 293.400 &  0.036585 & 0.005177 \\ 
+   & 297.060 &  0.063291 & 0.005381 \\ 
+   & 300.500 &  0.027027 & 0.005735 \\ 
+   & 303.960 &  0.055556 & 0.005902 \\ 
+   & 307.440 &  0.044118 & 0.006245 \\ 
+   & 310.680 &  0.046154 & 0.006534 \\ 
+   & 313.980 &  0.048387 & 0.006851 \\ 
+   & 317.240 &  0.050847 & 0.007200 \\ 
+  50 & 320.380 &  0.053571 & 0.007587 \\ 
+   & 323.300 &  0.018868 & 0.008006 \\ 
+   & 326.320 &  0.057692 & 0.008172 \\ 
+   & 329.380 &  0.040816 & 0.008666 \\ 
+   & 332.280 &  0.063830 & 0.009045 \\ 
+   & 335.120 &  0.022727 & 0.009645 \\ 
+   & 337.740 &  0.046512 & 0.009877 \\ 
+   & 340.480 &  0.024390 & 0.010351 \\ 
+   & 343.280 &  0.075000 & 0.010636 \\ 
+   & 345.940 &  0.027027 & 0.011471 \\ 
+  60 & 348.480 &  0.055556 & 0.011803 \\ 
+   & 351.020 &  0.029412 & 0.012484 \\ 
+   & 353.540 &  0.060606 & 0.012880 \\ 
 
-\begin{codice_c}[caption={Programma per la ricerca di massimi e minimi relativi e calcolo di $\Delta h/h$}, label={lst:ricerca_max_min}][H]
-#include <stdio.h>
-#include <stdlib.h>
-
-int main() {
-  FILE *pfr, *pfw;
-  int b=0, n=0;
-  double t, h=0, hTemp, hMinP=0, hMin, hMax;
-  if ((pfr = fopen("posizione.txt", "r")) == NULL) {
-    printf("C'e' stato un errore nel tentativo di aprire il file 'posizione.txt'.\n");
-    exit(1);
-  }
-  if ((pfw = fopen("risultati.txt", "w")) == NULL) {
-    printf("C'e' stato un errore nel tentativo di creare il file 'risultati.txt'.\n");
-    exit(1);
-  }
-  fscanf(pfr, "%lf", &t); //Legge il tempo per la prima volta
-  while (!feof(pfr)) { //Continua finche' il file non e' finito
-    hTemp = h;
-    fscanf(pfr, "%lf", &h); //Legge la posizione
-    if (b == 0 && h < hTemp) { //Caso di un massimo
-      hMax = h;
-      b = 1;
-    } else if (b == 1 && h > hTemp) { //Caso di un minimo
-      hMin = h;
-      printf("%2d: t = %3.2lf s -- dH/H = %5.6lf \n", 1+n++,t,(hMin-hMinP)/(hMax-hMinP));
-      fprintf(pfw, "%lf %lf \n", t, (hMin - hMinP) / (hMax - hMinP));
-      hMinP = hMin;
-      b=0;
-    }
-    fscanf(pfr, "%lf", &t); //Legge il tempo
-  }
-  fclose(pfr);
-  fclose(pfw);
-}
-
-\end{codice_c}
+ \hline
+\end{longtable}
+\end{center}
 
 
 
@@ -423,7 +512,14 @@ int main() {
 \includegraphics[scale=0.8]{vel_attrito_aria.eps} 
 \end{figure}
 
-\begin{table}[ht]
+\begin{figure}
+\caption{Logaritmo del rapporto tra la differenza di $v_\text{lim}$ e $v$ e la velocità limite in funzione del tempo}
+\label{fig:v_vlim}
+\centering
+\includegraphics[scale=0.8]{logvst.eps} 
+\end{figure}
+
+\begin{table}[H]
 \caption{Dati scelti della velocità di caduta in presenza di attrito dell'aria in funzione del tempo}
 \label{tab:velocita_attrito_aria}
 \centering
@@ -462,12 +558,44 @@ int main() {
 \end{tabular}
 \end{table}
 
-\begin{figure}
-\caption{Logaritmo del rapporto tra la differenza di $v_\text{lim}$ e $v$ e la velocità limite in funzione del tempo}
-\label{fig:v_vlim}
-\centering
-\includegraphics[scale=0.8]{logvst.eps} 
-\end{figure}
+\pagebreak
+\begin{codice_c}[caption={Programma per la ricerca di massimi e minimi relativi e calcolo di $\Delta h/h$}, label={lst:ricerca_max_min}][H]
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+  FILE *pfr, *pfw;
+  int b=0, n=0;
+  double t, h=0, hTemp, hMinP=0, hMin, hMax;
+  if ((pfr = fopen("posizione.txt", "r")) == NULL) {
+    printf("C'e' stato un errore nel tentativo di aprire il file 'posizione.txt'.\n");
+    exit(1);
+  }
+  if ((pfw = fopen("risultati.txt", "w")) == NULL) {
+    printf("C'e' stato un errore nel tentativo di creare il file 'risultati.txt'.\n");
+    exit(1);
+  }
+  fscanf(pfr, "%lf", &t); //Legge il tempo per la prima volta
+  while (!feof(pfr)) { //Continua finche' il file non e' finito
+    hTemp = h;
+    fscanf(pfr, "%lf", &h); //Legge la posizione
+    if (b == 0 && h < hTemp) { //Caso di un massimo
+      hMax = h;
+      b = 1;
+    } else if (b == 1 && h > hTemp) { //Caso di un minimo
+      hMin = h;
+      printf("%2d: t = %3.2lf s -- dH/H = %5.6lf \n", 1+n++,t,(hMin-hMinP)/(hMax-hMinP));
+      fprintf(pfw, "%lf %lf \n", t, (hMin - hMinP) / (hMax - hMinP));
+      hMinP = hMin;
+      b=0;
+    }
+    fscanf(pfr, "%lf", &t); //Legge il tempo
+  }
+  fclose(pfr);
+  fclose(pfw);
+}
+
+\end{codice_c}
 
 
 \begin{table}[ht]
@@ -519,6 +647,7 @@ int main() {
 \end{tabular}
 \end{table}
 
+<<<<<<< HEAD
 
 \begin{table}[ht]
 \centering
@@ -625,6 +754,8 @@ int main() {
 
 
 
+=======
+>>>>>>> origin/master
 
 
 
