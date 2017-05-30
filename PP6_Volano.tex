@@ -519,72 +519,6 @@ Dall'equazione (\ref{eq:massa}) possiamo infine ricavare la miglior stima di $M$
 \end{longtable}
 \end{center}
 
-
-
-
-
-
-
-\begin{figure}
-\caption{Posizione della zavorra in funzione del tempo in presenza di attrito del mezzo}
-\label{fig:caduta_attrito_aria}
-\centering
-\includegraphics[scale=0.8]{caduta_attrito_aria.eps} 
-\end{figure}
-
-\begin{figure}
-\caption{Velocità della zavorra in funzione del tempo in presenza di attrito del mezzo}
-\label{fig:vel_attrito_aria}
-\centering
-\includegraphics[scale=0.8]{vel_attrito_aria.eps} 
-\end{figure}
-
-\begin{figure}
-\caption{Logaritmo del rapporto tra la differenza di $v_\text{lim}$ e $v$ e la velocità limite in funzione del tempo}
-\label{fig:v_vlim}
-\centering
-\includegraphics[scale=0.8]{logvst.eps} 
-\end{figure}
-
-\begin{table}[H]
-\caption{Dati scelti della velocità di caduta in presenza di attrito dell'aria in funzione del tempo}
-\label{tab:velocita_attrito_aria}
-\centering
-\begin{tabular}{rrr}
-  \hline
- & t [\SI{}{s}]& a [\SI{}{m/s^2}] \\ 
-  \hline
- & 0.090 & 0.007 \\ 
-   & 0.190 & 0.008 \\ 
-   & 0.290 & 0.009 \\ 
-   & 0.390 & 0.011 \\ 
-  5 & 0.490 & 0.013 \\ 
-   & 0.590 & 0.015 \\ 
-   & 0.690 & 0.015 \\ 
-   & 0.790 & 0.019 \\ 
-   & 0.890 & 0.023 \\ 
-  10 & 0.990 & 0.026 \\ 
-   & 1.090 & 0.028 \\ 
-   & 1.190 & 0.030 \\ 
-   & 1.290 & 0.032 \\ 
-   & 1.390 & 0.037 \\ 
-  15 & 1.490 & 0.037 \\ 
-   & 1.590 & 0.037 \\ 
-   & 1.690 & 0.039 \\ 
-   & 1.790 & 0.041 \\ 
-   & 1.890 & 0.039 \\ 
-  20 & 1.990 & 0.041 \\ 
-   & 2.090 & 0.043 \\ 
-   & 2.190 & 0.045 \\ 
-   & 2.290 & 0.049 \\ 
-   & 2.390 & 0.049 \\ 
-  25 & 2.490 & 0.051 \\ 
-   & 2.590 & 0.051 \\ 
-   & 2.690 & 0.052 \\ 
-   \hline
-\end{tabular}
-\end{table}
-
 \pagebreak
 \begin{codice_c}[caption={Programma per la ricerca di massimi e minimi relativi e calcolo di $\Delta h/h$}, label={lst:ricerca_max_min}][H]
 #include <stdio.h>
@@ -623,59 +557,6 @@ int main() {
 }
 
 \end{codice_c}
-
-
-\begin{table}[ht]
-\caption{Accelerazioni relative a 0,1,2,3,4,5,6,7 e 8 coppie di bulloni}
-\label{tab:acc}
-\centering
-\begin{tabular}{cccccccccc}
-  \hline
- & $a_0$ & $a_1$ & $a_2$ &$a_3$ & $a_4$ & $a_5$ & $a_6$ & $a_7$ & $a_8$ \\ 
-  & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$\\[0.2cm]
-  \hline
-1 & 0.04920 & 0.03850 & 0.03170 & 0.02680 & 0.02320 & 0.02050 & 0.01840 & 0.01650 & 0.01510 \\ 
-  2 & 0.05100 & 0.03950 & 0.03280 & 0.02780 & 0.02380 & 0.02090 & 0.01870 & 0.01700 & 0.01560 \\ 
-  3 & 0.05020 & 0.03960 & 0.03310 & 0.02770 & 0.02400 & 0.02110 & 0.01890 & 0.01730 & 0.01580 \\ 
-  4 & 0.05070 & 0.03990 & 0.03300 & 0.02800 & 0.02390 & 0.02090 & 0.01890 & 0.01710 & 0.01580 \\ 
-  5 & 0.05080 & 0.03980 & 0.03300 & 0.02800 & 0.02390 & 0.02120 & 0.01900 & 0.01720 & 0.01590 \\ 
-  6 & 0.04920 & 0.03870 & 0.03160 & 0.02680 & 0.02330 & 0.02050 & 0.01820 & 0.01660 & 0.01510 \\ 
-  7 & 0.05150 & 0.03930 & 0.03290 & 0.02760 & 0.02380 & 0.02140 & 0.01880 & 0.01710 & 0.01570 \\ 
-  8 & 0.05160 & 0.03970 & 0.03280 & 0.02750 & 0.02400 & 0.02160 & 0.01890 & 0.01720 & 0.01570 \\ 
-  9 & 0.05070 & 0.04010 & 0.03340 & 0.02780 & 0.02390 & 0.02110 & 0.01880 & 0.01710 & 0.01580 \\ 
-  10 & 0.05030 & 0.03980 & 0.03340 & 0.02780 & 0.02400 & 0.02100 & 0.01900 & 0.01740 & 0.01600 \\ 
-   \hline
-   \end{tabular}
-\end{table}
-
-
-
-
-\begin{table}[ht]
-\caption{Incertezze relative alle accelerazioni con 0,1,2,3,4,5,6,7 e 8 coppie di bulloni}
-\label{tab:sigma}
-\centering
-\begin{tabular}{cccccccccc}
-  \hline
- & $\sigma_0$ & $\sigma_1$ &$\sigma_2$ & $\sigma_3$ & $\sigma_4$ & $\sigma_5$  & $\sigma_6$ & $\sigma_7$  & $\sigma_8$ \\
- & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$\\[0.2cm] 
-  \hline
-1 & 0.00008 & 0.00006 & 0.00005 & 0.00005 & 0.00004 & 0.00005 & 0.00005 & 0.00002 & 0.00005 \\ 
-  2 & 0.00007 & 0.00005 & 0.00005 & 0.00003 & 0.00002 & 0.00002 & 0.00002 & 0.00002 & 0.00002 \\ 
-  3 & 0.00008 & 0.00005 & 0.00005 & 0.00004 & 0.00003 & 0.00003 & 0.00002 & 0.00002 & 0.00002 \\ 
-  4 & 0.00007 & 0.00006 & 0.00005 & 0.00004 & 0.00003 & 0.00003 & 0.00002 & 0.00002 & 0.00002 \\ 
-  5 & 0.00010 & 0.00007 & 0.00005 & 0.00003 & 0.00003 & 0.00002 & 0.00002 & 0.00002 & 0.00002 \\ 
-  6 & 0.00010 & 0.00007 & 0.00006 & 0.00005 & 0.00005 & 0.00004 & 0.00005 & 0.00004 & 0.00005 \\ 
-  7 & 0.00008 & 0.00004 & 0.00005 & 0.00003 & 0.00003 & 0.00003 & 0.00002 & 0.00002 & 0.00002 \\ 
-  8 & 0.00009 & 0.00005 & 0.00004 & 0.00003 & 0.00003 & 0.00003 & 0.00002 & 0.00002 & 0.00002 \\ 
-  9 & 0.00007 & 0.00006 & 0.00005 & 0.00004 & 0.00003 & 0.00003 & 0.00002 & 0.00002 & 0.00002 \\ 
-  10 & 0.00009 & 0.00007 & 0.00006 & 0.00003 & 0.00003 & 0.00003 & 0.00002 & 0.00002 & 0.00002 \\ 
-   \hline
-\end{tabular}
-\end{table}
-
-
-
 
 \begin{center}
 \begin{longtable}{cccc}
@@ -760,6 +641,65 @@ int main() {
 \end{longtable}
 \end{center}
 
+\begin{figure}
+\caption{Posizione della zavorra in funzione del tempo in presenza di attrito del mezzo}
+\label{fig:caduta_attrito_aria}
+\centering
+\includegraphics[scale=0.8]{caduta_attrito_aria.eps} 
+\end{figure}
+
+\begin{figure}
+\caption{Velocità della zavorra in funzione del tempo in presenza di attrito del mezzo}
+\label{fig:vel_attrito_aria}
+\centering
+\includegraphics[scale=0.8]{vel_attrito_aria.eps} 
+\end{figure}
+
+\begin{figure}
+\caption{Logaritmo del rapporto tra la differenza di $v_\text{lim}$ e $v$ e la velocità limite in funzione del tempo}
+\label{fig:v_vlim}
+\centering
+\includegraphics[scale=0.8]{logvst.eps} 
+\end{figure}
+
+\begin{table}[H]
+\caption{Dati scelti della velocità di caduta in presenza di attrito dell'aria in funzione del tempo}
+\label{tab:velocita_attrito_aria}
+\centering
+\begin{tabular}{rrr}
+  \hline
+ & t [\SI{}{s}]& a [\SI{}{m/s^2}] \\ 
+  \hline
+ & 0.090 & 0.007 \\ 
+   & 0.190 & 0.008 \\ 
+   & 0.290 & 0.009 \\ 
+   & 0.390 & 0.011 \\ 
+  5 & 0.490 & 0.013 \\ 
+   & 0.590 & 0.015 \\ 
+   & 0.690 & 0.015 \\ 
+   & 0.790 & 0.019 \\ 
+   & 0.890 & 0.023 \\ 
+  10 & 0.990 & 0.026 \\ 
+   & 1.090 & 0.028 \\ 
+   & 1.190 & 0.030 \\ 
+   & 1.290 & 0.032 \\ 
+   & 1.390 & 0.037 \\ 
+  15 & 1.490 & 0.037 \\ 
+   & 1.590 & 0.037 \\ 
+   & 1.690 & 0.039 \\ 
+   & 1.790 & 0.041 \\ 
+   & 1.890 & 0.039 \\ 
+  20 & 1.990 & 0.041 \\ 
+   & 2.090 & 0.043 \\ 
+   & 2.190 & 0.045 \\ 
+   & 2.290 & 0.049 \\ 
+   & 2.390 & 0.049 \\ 
+  25 & 2.490 & 0.051 \\ 
+   & 2.590 & 0.051 \\ 
+   & 2.690 & 0.052 \\ 
+   \hline
+\end{tabular}
+\end{table}
 
 
 
