@@ -471,13 +471,13 @@ int main() {
 
 
 \begin{table}[ht]
-\caption{Accelerazioni}
+\caption{Accelerazioni relative a 0,1,2,3,4,5,6,7 e 8 coppie di bulloni}
 \label{tab:acc}
 \centering
 \begin{tabular}{cccccccccc}
   \hline
- & 0 Coppie & 1 Coppia & 2 Coppie & 3 Coppie & 4 Coppie & 5 Coppie & 6 Coppie & 7 Coppie & 8 Coppie \\ 
-  & [${m/s^2}$] & [${m/s^2}$] & [${m/s^2}$] & [${m/s^2}$] & [${m/s^2}$] & [${m/s^2}$] & [${m/s^2}$] & [${m/s^2}$] & [${m/s^2}$]\\[0.2cm]
+ & $a_0$ & $a_1$ & $a_2$ &$a_3$ & $a_4$ & $a_5$ & $a_6$ & $a_7$ & $a_8$ \\ 
+  & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$\\[0.2cm]
   \hline
 1 & 0.04920 & 0.03850 & 0.03170 & 0.02680 & 0.02320 & 0.02050 & 0.01840 & 0.01650 & 0.01510 \\ 
   2 & 0.05100 & 0.03950 & 0.03280 & 0.02780 & 0.02380 & 0.02090 & 0.01870 & 0.01700 & 0.01560 \\ 
@@ -497,12 +497,13 @@ int main() {
 
 
 \begin{table}[ht]
-\caption{Incertezze sulle accelerazioni}
-\label{tab:sigma1}
+\caption{Incertezze relative alle accelerazioni con 0,1,2,3,4,5,6,7 e 8 coppie di bulloni}
+\label{tab:sigma}
 \centering
-\begin{tabular}{rrrrrrrrrr}
+\begin{tabular}{cccccccccc}
   \hline
- & $\sigma$ 0 coppie & $\sigma$ 1 coppia &$\sigma$ 2 coppie & $\sigma$ 3 coppie & $\sigma$ 4 coppie & $\sigma$ 5 coppie & $\sigma$ 6 coppie & $\sigma$ 7 coppie & $\sigma$ 8 coppie \\ 
+ & $\sigma_0$ & $\sigma_1$ &$\sigma_2$ & $\sigma_3$ & $\sigma_4$ & $\sigma_5$  & $\sigma_6$ & $\sigma_7$  & $\sigma_8$ \\
+ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$ & $[\SI{}{m/s^2}]$\\[0.2cm] 
   \hline
 1 & 0.00008 & 0.00006 & 0.00005 & 0.00005 & 0.00004 & 0.00005 & 0.00005 & 0.00002 & 0.00005 \\ 
   2 & 0.00007 & 0.00005 & 0.00005 & 0.00003 & 0.00002 & 0.00002 & 0.00002 & 0.00002 & 0.00002 \\ 
@@ -517,6 +518,27 @@ int main() {
    \hline
 \end{tabular}
 \end{table}
+
+
+\begin{table}[ht]
+\centering
+\caption{Medie pesate delle accelerazioni con 0,1,2,3,4,5,6,7 e 8 coppie di bulloni, e relative incertezze pesate }
+\label{tab:sigma1}
+\begin{tabular}{lc}
+  \hline
+ $\overline{a}_0 \pm \overline{\sigma}_0\, [\SI{}{m/s^2}]$ & 0.05057 $\pm$ 0.00026\\[0.08cm]
+ $\overline{a}_1\pm \overline{\sigma}_1\,  [\SI{}{m/s^2}]$ & 0.03949  $\pm$ 0.00017\\[0.08cm]
+ $\overline{a}_2 \pm \overline{\sigma}_2\, [\SI{}{m/s^2}]$ & 0.03279 $\pm$ 0.00020\\[0.08cm]
+ $\overline{a}_3 \pm \overline{\sigma}_3\, [\SI{}{m/s^2}]$ & 0.02767 $\pm$ 0.00014\\[0.08cm]
+ $\overline{a}_4 \pm \overline{\sigma}_4\, [\SI{}{m/s^2}]$ & 0.02384 $\pm$ 0.00009\\[0.08cm]
+ $\overline{a}_5 \pm \overline{\sigma}_5\, [\SI{}{m/s^2}]$ & 0.02108 $\pm$ 0.00011\\[0.08cm]
+ $\overline{a}_6 \pm \overline{\sigma}_6\, [\SI{}{m/s^2}]$ & 0.01885 $\pm$ 0.00008\\[0.08cm]
+ $\overline{a}_7 \pm \overline{\sigma}_7\, [\SI{}{m/s^2}]$ & 0.01709 $\pm$ 0.00009\\[0.08cm]
+ $\overline{a}_8 \pm \overline{\sigma}_8\, [\SI{}{m/s^2}]$ &0.01576 $\pm$ 0.00010\\[0.08cm] 
+\hline
+\end{tabular}
+\end{table}
+
 
 \begin{center}
 \begin{longtable}{cccc}
