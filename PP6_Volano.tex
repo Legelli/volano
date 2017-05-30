@@ -121,6 +121,13 @@ Per ricavare i parametri della regressione lineare si utilizzeranno le seguenti 
 \label{sec:descrizione}
 Un volano consiste in un disco metallico di momento d'inerzia $I_0$, vincolato a ruotare attorno ad un asse fisso orizzontale passante per il suo centro. Ad esso è possibile avvitare, nei pressi del bordo, alcuni bulloni al fine di aumentarne il momento d'inerzia. Esso è collegato, mediante un filo passante per una puleggia di massa trascurabile, ad una zavorra che, scendendo, mette in moto rotatorio il disco. Considerando il filo inestensibile e di massa trascurabile si ha che l'accelerazione $a$ a cui scende la zavorra è legata all'accelerazione angolare di rotazione del volano $\alpha$ dalla relazione $a = \alpha r$, dove $r$ è il raggio del disco più piccolo, collegato al volano, attorno al quale si avvolge il filo (si veda la figura~\ref{fig:schema_apparato}). Il disco è soggetto ad un momento frenante $M_a$ dovuto agli attriti dell'asse di rotazione con la sede entro la quale ruota; inoltre, al volano possono essere applicate delle palette al fine di incrementare l'attrito con l'aria e studiare la velocità limite $v_\text{lim}$ di caduta della zavorra. Nel corso dell'esperienza si daranno le stime di $I_0$, $M_a$ e del coefficiente di attrito viscoso con l'aria $k$.
 
+\begin{figure}
+\caption{Schema dell'apparato sperimentale}
+\label{fig:schema_apparato}
+\centering
+\includegraphics[scale=0.3]{volano.png}
+\end{figure}
+
 
 
 %================APPARATO SPERIMENTALE======================%		
@@ -408,6 +415,26 @@ Dall'equazione (\ref{eq:massa}) possiamo infine ricavare la miglior stima di $M$
 %=================APPENDICE==================================
 
 \section{Appendice: tabelle e grafici}
+
+\begin{table}[ht]
+\centering
+\caption{Medie pesate delle accelerazioni con 0,1,2,3,4,5,6,7 e 8 coppie di bulloni, e relative incertezze pesate}
+\label{tab:sigma1}
+\begin{tabular}{lc}
+  \hline
+ $\overline{a}_0 \pm \overline{\sigma}_0\, [\SI{}{m/s^2}]$ & 0.05057 $\pm$ 0.00026\\[0.08cm]
+ $\overline{a}_1\pm \overline{\sigma}_1\,  [\SI{}{m/s^2}]$ & 0.03949  $\pm$ 0.00017\\[0.08cm]
+ $\overline{a}_2 \pm \overline{\sigma}_2\, [\SI{}{m/s^2}]$ & 0.03279 $\pm$ 0.00020\\[0.08cm]
+ $\overline{a}_3 \pm \overline{\sigma}_3\, [\SI{}{m/s^2}]$ & 0.02767 $\pm$ 0.00014\\[0.08cm]
+ $\overline{a}_4 \pm \overline{\sigma}_4\, [\SI{}{m/s^2}]$ & 0.02384 $\pm$ 0.00009\\[0.08cm]
+ $\overline{a}_5 \pm \overline{\sigma}_5\, [\SI{}{m/s^2}]$ & 0.02108 $\pm$ 0.00011\\[0.08cm]
+ $\overline{a}_6 \pm \overline{\sigma}_6\, [\SI{}{m/s^2}]$ & 0.01885 $\pm$ 0.00008\\[0.08cm]
+ $\overline{a}_7 \pm \overline{\sigma}_7\, [\SI{}{m/s^2}]$ & 0.01709 $\pm$ 0.00009\\[0.08cm]
+ $\overline{a}_8 \pm \overline{\sigma}_8\, [\SI{}{m/s^2}]$ &0.01576 $\pm$ 0.00010\\[0.08cm] 
+\hline
+\end{tabular}
+\end{table}
+
 \begin{center}
 \begin{longtable}{cc|cc}
 \label{tab:dh_t}\\
@@ -647,26 +674,7 @@ int main() {
 \end{tabular}
 \end{table}
 
-<<<<<<< HEAD
 
-\begin{table}[ht]
-\centering
-\caption{Medie pesate delle accelerazioni con 0,1,2,3,4,5,6,7 e 8 coppie di bulloni, e relative incertezze pesate }
-\label{tab:sigma1}
-\begin{tabular}{lc}
-  \hline
- $\overline{a}_0 \pm \overline{\sigma}_0\, [\SI{}{m/s^2}]$ & 0.05057 $\pm$ 0.00026\\[0.08cm]
- $\overline{a}_1\pm \overline{\sigma}_1\,  [\SI{}{m/s^2}]$ & 0.03949  $\pm$ 0.00017\\[0.08cm]
- $\overline{a}_2 \pm \overline{\sigma}_2\, [\SI{}{m/s^2}]$ & 0.03279 $\pm$ 0.00020\\[0.08cm]
- $\overline{a}_3 \pm \overline{\sigma}_3\, [\SI{}{m/s^2}]$ & 0.02767 $\pm$ 0.00014\\[0.08cm]
- $\overline{a}_4 \pm \overline{\sigma}_4\, [\SI{}{m/s^2}]$ & 0.02384 $\pm$ 0.00009\\[0.08cm]
- $\overline{a}_5 \pm \overline{\sigma}_5\, [\SI{}{m/s^2}]$ & 0.02108 $\pm$ 0.00011\\[0.08cm]
- $\overline{a}_6 \pm \overline{\sigma}_6\, [\SI{}{m/s^2}]$ & 0.01885 $\pm$ 0.00008\\[0.08cm]
- $\overline{a}_7 \pm \overline{\sigma}_7\, [\SI{}{m/s^2}]$ & 0.01709 $\pm$ 0.00009\\[0.08cm]
- $\overline{a}_8 \pm \overline{\sigma}_8\, [\SI{}{m/s^2}]$ &0.01576 $\pm$ 0.00010\\[0.08cm] 
-\hline
-\end{tabular}
-\end{table}
 
 
 \begin{center}
@@ -751,11 +759,6 @@ int main() {
  \hline
 \end{longtable}
 \end{center}
-
-
-
-=======
->>>>>>> origin/master
 
 
 
