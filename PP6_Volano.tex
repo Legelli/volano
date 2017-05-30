@@ -184,12 +184,10 @@ Dove si ha:
 
 
 Gli errori da associare alla stima di $M_a$ e $I_0$ sono dati dalla propagazione delle incertezze. Derivando parzialmente rispetto ai parametri delle equazioni~\ref{eq:momentoattrito} e~\ref{eq:momentoinerzia} otteniamo:
-
 \begin{equation}\label{eq:incertezzamomentoattrito}
 \sigma_{M_a}^2= \frac {\partial{M_a}}{ \partial m} ^2 \cdot \sigma_m^2 + \frac {\partial{M_a}}{ \partial r} ^2 \cdot \sigma_r^2 + \frac {\partial{M_a}}{ \partial R} ^2 \cdot \sigma_R^2 + \frac {\partial{M_a}}{ \partial m_b} ^2 \cdot \sigma_{m_b}^2 + \frac {\partial{M_a}}{ \partial B} ^2 \cdot \sigma_{B}^2 
 \end{equation}
-
-Dove con $\sigma_m$, $\sigma_R$ e $\sigma_r$ intendiamo l'incertezza sulla massa, sulla distanza tra asse di rotazione e bulloni e sul raggio del dischetto date dalle rispettive incertezze strumentali, e con $\sigma_{m_b}$ l'incertezza sul valor medio della massa dei bulloni, data dalla somma in quadratura dell'incertezza strumentale e statistica (deviazione standard della media). Con $\sigma_B$ indichiamo invece l'errore sul coefficiente angolare stimato con il metodo dei minimi quadrati (in particolare è la radice della varianza calcolata con~\ref{eq:varianzacoeff}).
+dove con $\sigma_m$, $\sigma_R$ e $\sigma_r$ intendiamo l'incertezza sulla massa, sulla distanza tra asse di rotazione e bulloni e sul raggio del dischetto date dalle rispettive incertezze strumentali, e con $\sigma_{m_b}$ l'incertezza sul valor medio della massa dei bulloni, data dalla somma in quadratura dell'incertezza strumentale e statistica (deviazione standard della media). Con $\sigma_B$ indichiamo invece l'errore sul coefficiente angolare stimato con il metodo dei minimi quadrati (in particolare è la radice della varianza calcolata con~\ref{eq:varianzacoeff}).
 
 Derivando parzialmente si ottiene dalla~\ref{eq:incertezzamomentoattrito}:
 \begin{small}
@@ -204,8 +202,7 @@ L'errore sul momento d'inerzia del volano è ottenuto con lo stesso procedimento,
 \sigma_{I_0}^2 = \frac {\partial{I_0}}{ \partial m} ^2 \cdot \sigma_m^2 + \frac {\partial{I_0}}{ \partial r} ^2 \cdot \sigma_r^2 + \frac {\partial{I_0}}{ \partial R} ^2 \cdot \sigma_R^2 + \frac {\partial{I_0}}{ \partial m_b} ^2 \cdot \sigma_{m_b}^2+ \frac {\partial{I_0}}{\partial B} ^2 \cdot \sigma_{B}^2 + \frac {\partial{I_0}}{\partial A} ^2 \cdot \sigma_{A}^2 + 2 \frac{\partial I_0}{\partial B} \frac{\partial I_0}{\partial A} \cov(A, B)
 \end{equation} 
 \end{small}
-
-Dove le incertezze sono le stesse citate precedentemente, eccetto per $\sigma_A$ che indica l'errore sull'intercetta anch'esso stimato con il metodo dei minimi quadrati (in particolare con la radice della varianza~\ref{eq:varianzainter}). Poiché i parametri $A$ e $B$ sono stati stimati a partire dallo stesso insieme di dati, si è reso necessario inserire anche il termine di covarianza. Derivando e sostituendo nella~\ref{eq:incertezzamomentoinerzia} si ottiene: 
+dove le incertezze sono le stesse citate precedentemente, eccetto per $\sigma_A$ che indica l'errore sull'intercetta anch'esso stimato con il metodo dei minimi quadrati (in particolare con la radice della varianza~\ref{eq:varianzainter}). Poiché i parametri $A$ e $B$ sono stati stimati a partire dallo stesso insieme di dati, si è reso necessario inserire anche il termine di covarianza. Derivando e sostituendo nella~\ref{eq:incertezzamomentoinerzia} si ottiene: 
 \begin{equation}
 \begin{split}
 \sigma_{I_0}^2 = (-r^2)^2 \cdot \sigma_m^2 + (-2mr)^2 \cdot \sigma_r^2 + \left(4Rm_b \frac{A}{B}\right)^2 \cdot \sigma_R^2 + \left(2R^2 \frac{A}{B}\right)^2 \cdot \sigma_{m_b}^2+ \\ 
@@ -214,7 +211,7 @@ Dove le incertezze sono le stesse citate precedentemente, eccetto per $\sigma_A$
 \end{equation}
 
 
-I valori dei parametri $A$ e $B$ ottenuti con le equazioni~\ref{eq:coefficienteangolare} e \ref{eq:intercetta}, a partire dai dati riportati in tabella~\ref{accvsbulloni} sono: 
+I valori dei parametri $A$ e $B$ ottenuti con le equazioni~\ref{eq:coefficienteangolare} e \ref{eq:intercetta}, a partire dai dati riportati in tabella~\ref{tab:accvsbulloni} sono: 
 \begin{equation}
 \boxed{\bf{A = \SI{19.71 \pm 0.09}{s^2 / m}}};
 \end{equation}
