@@ -154,11 +154,9 @@ Un volano consiste in un disco metallico di momento d'inerzia $I_0$, vincolato a
 
 Inserendo due coppie di bulloni per misura, senza compromettere la simmetria del sistema analizzato, studiamo il moto di discesa della massa $m$. Prima di cominciare l'acquisizione si verifica la linearità e la correttezza della misura di posizione del sensore, verificando la lunghezza in alcuni punti con il metro. Per ogni coppia di bulloni sono state acquisite $10$ misure di velocità in funzione del tempo. Le diverse stime dell'accelerazione sono ottenute dal coefficiente angolare delle rette che interpolano tali velocità. Ognuna delle misure di accelerazione così ottenute è affetta da un'incertezza fornitaci dal programma \emph{DataStudio\textsuperscript\textregistered}. Poiché queste incertezze sono disomogenee, per tenerne conto calcoliamo la media pesata dell'accelerazione per ogni raccolta. I dati sono riportati nella tabella~\ref{tab:accvsbulloni} con le rispettive incertezze, ottenute sommando in quadratura l'incertezza da associare alla media pesata (per definizione $1/\sqrt{\sum_{i}p_i}$, con $p_i = 1 / \sigma_{a_i}^2$) e la deviazione standard della media ($\sigma/\sqrt{10}$).
 Poiché l'inverso dell'accelerazione e il numero di bulloni inseriti sono legati da una relazione lineare è possibile ottenere una stima del momento d'inerzia del disco del volano, $I_0$, e del momento dell'attrito radente, $M_a$. Partendo dalle equazioni cardinali della dinamica otteniamo: 
-	
 	\begin{equation}\label{eq:equazioneretta}
 	\frac{1}{a}= A + B\cdot n
 	\end{equation}
-	
 dove $n$ è il numero di coppie di bulloni, mente \emph{$A$} e \emph{$B$} sono rispettivamente :
 	
 	\begin{equation}\label{eq:intercettaecoefficente}
