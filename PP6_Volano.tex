@@ -344,7 +344,7 @@ con incertezza calcolata propagando sull'equazione~\ref{eq:k_aria}, ottenendo
 \end{align*}
 \normalsize
 
-Riteniamo che eventuali discrepanze della nostra stima dal \emph{valore vero}\footnote{È qui doveroso enfatizzare questo termine in quanto l'attrito con l'aria, essendo dovuto al moto casuale delle particelle che compongono il mezzo, non può essere esplicitato con una rigorosa trattazione meccanica, pertanto il coefficiente ha solo valore indicativo della influenza sul moto del corpo.} siano dovute alla eventuale non dipendenza lineare del momento d'attrito con l'aria dalla velocità. L'incertezza, dell'ordine dello $0.5\%$ è dovuta alle misure del raggio del dischetto attorno a cui si avvolge il filo e alla precedente stima del momento d'attrito frenante, oltre all'errore statistico sulla media della velocità limite poiché, come si nota dal grafico~\ref{fig:vel_attrito_aria}, la velocità oscilla in modo consistente attorno a $v_\text{lim}$.
+Come valore del momento di attrito frenante $M_a$ abbiamo utilizzato quello precedentemente stimato nella sezione~\ref{subsec:seconda}, in quanto è maggiormente preciso. Riteniamo che eventuali discrepanze della nostra stima dal \emph{valore vero}\footnote{È qui doveroso enfatizzare questo termine in quanto l'attrito con l'aria, essendo dovuto al moto casuale delle particelle che compongono il mezzo, non può essere esplicitato con una rigorosa trattazione meccanica, pertanto il coefficiente ha solo valore indicativo della influenza sul moto del corpo.} siano dovute alla eventuale non dipendenza lineare del momento d'attrito con l'aria dalla velocità. L'incertezza, dell'ordine dello $0.5\%$ è dovuta alle misure del raggio del dischetto attorno a cui si avvolge il filo e alla precedente stima del momento d'attrito frenante, oltre all'errore statistico sulla media della velocità limite poiché, come si nota dal grafico~\ref{fig:vel_attrito_aria}, la velocità oscilla in modo consistente attorno a $v_\text{lim}$.
 
 Nel grafico di figura~\ref{fig:v_vlim} si riporta il logaritmo naturale della differenza tra il valore della velocità limite e quello della velocità fratto la velocità limite in funzione del tempo\footnote{È necessario dividere il valore della differenza tra velocità limite e velocità per il valore della velocità limite in quanto il logaritmo può avere come argomento solamente numeri adimensionali.}; sono stati scelti soltanto $27$ valori rispetto agli originali $2206$ (i dati sono riportati in tabella~\ref{tab:velocita_attrito_aria}) in quanto prima si sono esclusi i valori della velocità da cui si è ricavata la velocità limite, poiché in questo caso si è interessati a studiare l'andamento della velocità prima di raggiungere il moto uniforme, quindi si è tenuto un dato ogni $5$ poiché la frequenza di acquisizione del sensore di posizione non permetteva di apprezzare differenze nell'andamento della grandezza studiata. Le incertezze attribuite alla velocità sono le stesse già trattate precedentemente, ossia ultimo digit diviso $\sqrt{12}$, e l'incertezza sull'ordinata è stata propagata derivando parzialmente sulla funzione logaritmo; queste sono rappresentate per mezzo delle barre di errore di colore nero.
 
@@ -550,6 +550,10 @@ int main() {
 \includegraphics[scale=0.8]{vel_attrito_aria.eps} 
 \end{figure}
 
+\clearpage
+
+\newgeometry{textheight=1.2\textheight}
+
 \begin{figure}
 \caption{Logaritmo del rapporto tra la differenza di $v_\text{lim}$ e $v$ e la velocità limite in funzione del tempo}
 \label{fig:v_vlim}
@@ -596,6 +600,9 @@ int main() {
 \end{tabular}
 \end{table}
 
+\restoregeometry
+
+\clearpage
 
 
 \end{document}
